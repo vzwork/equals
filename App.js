@@ -1,7 +1,6 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React, { createContext, useContext } from 'react';
-import { SafeAreaView } from 'react-native';
 
 import SignIn from './src/pages/Auth/SignIn';
 import SignUp from './src/pages/Auth/SignUp';
