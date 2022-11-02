@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button, StyleSheet, Text, TextInput, View, Alert, Linking } from 'react-native';
 import CheckBox from "@react-native-community/checkbox";
 
+// comment test
 const SignUp = ({navigation}) => {
   console.log("SignUp")
 
