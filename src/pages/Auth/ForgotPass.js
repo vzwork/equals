@@ -1,59 +1,45 @@
 import React from 'react';
 import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
 
-const SignIn = ({navigation}) => {
-  console.log("SignIn")
+const ForgotPass = ({navigation}) => {
+  console.log("ForgotPass")
 
   return (
     <View style={styles.container}>
 
       <View style={styles.headerContainer}>
         <Text style={styles.headerText}>EQuALS</Text>
-        <Text style={styles.welcomeText}>Welcome!</Text>
+        <Text style={styles.welcomeText}>Request a password reset</Text>
       </View>
 
       <View style={styles.loginContainer}>
-        <Text>Username</Text>
-        <TextInput
-          placeholder='Enter Username'
-          style={styles.textInput}
-        />
+        <Text>Enter the email address for your EQuALS's account.</Text>
+        <Text>We will send you a link to reset your password</Text>
 
-        <Text>Password</Text>
         <TextInput
-          placeholder=' Enter Password'
-          secureTextEntry={true}
+          placeholder='Enter your email'
           style={styles.textInput}
         />
 
         <View style={styles.btnContainer}>
           <Button
-            title='Sign In'
+            title='Send link'
             style={styles.btnLogin}
-          />
+            onPress={() => navigation.navigate('ForgotPassSuccess')}></Button>
         </View>
       </View>
 
       <View style={styles.signupContainer}>
         <Text
           style={styles.signupText}
-          onPress={() => navigation.navigate('SignUp')}>
-            Don't have an account?  Sign up!
+          onPress={() => navigation.navigate('SignIn')}>
+            Back to Home
         </Text>
       </View>
-
-
-      <View style={styles.forgotPassContainer}>
-        <Text
-          style={styles.signupText}
-          onPress={() => navigation.navigate('ForgotPass')}>
-           Forgot your password?
-        </Text>
-      </View>
-
     </View>
   );
 };
+
 
 const styles = StyleSheet.create({
   container: {
@@ -70,10 +56,6 @@ const styles = StyleSheet.create({
     marginBottom: 40
   },
   signupContainer: {
-    flex: 1,
-    alignItems: 'center'
-  },
-  forgotPassContainer: {
     flex: 1,
     alignItems: 'center'
   },
@@ -105,6 +87,8 @@ const styles = StyleSheet.create({
     // width: '100%',
     // alignSelf: 'stretch'
   }
+  
 });
 
-export default SignIn;
+
+export default ForgotPass;
