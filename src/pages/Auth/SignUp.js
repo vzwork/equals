@@ -3,6 +3,7 @@ import { Button, StyleSheet, Text, TextInput, View, Alert, Linking } from 'react
 import CheckBox from "@react-native-community/checkbox";
 
 // comment test
+// comment test 2
 const SignUp = ({navigation}) => {
   console.log("SignUp")
 
