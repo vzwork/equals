@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
+import Colors from '../../colors/Colors.mjs';
 
 const SignIn = ({navigation}) => {
   console.log("SignIn")
@@ -81,7 +82,7 @@ const styles = StyleSheet.create({
     textAlign: "left",
     fontSize: 52,
     fontWeight: "bold",
-    color: '#173C6F',
+    color: Colors.accent.secondary,
     marginBottom: 20
   },
   welcomeText: {
