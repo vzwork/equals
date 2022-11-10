@@ -39,6 +39,7 @@ const SignUp = ({navigation}) => {
         <TextInput
           placeholder='Enter Username'
           style={styles.textInput}
+          onChangeText={username => setUsername(username)}
         />
 
         <Text style={styles.textInputTitle}>Email Address</Text>
@@ -92,7 +93,7 @@ const SignUp = ({navigation}) => {
         <Button
           title="Create Account" style={styles.createAccountBtn}
           onPress={() => {
-            isFormValid(email,password1,password2,termsConditionsCheckbox,eulaCheckbox)
+            validateForm(email,password1,password2,termsConditionsCheckbox,eulaCheckbox)
             signUp();
           }}
         />
