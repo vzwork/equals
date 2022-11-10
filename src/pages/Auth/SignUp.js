@@ -7,6 +7,10 @@ import CheckBox from "@react-native-community/checkbox";
 const SignUp = ({navigation}) => {
   console.log("SignUp")
 
+  const [isFormValid, setIsFormValid] = useState(false);
+
+  const [username, setUsername] = useState('');
+
   const [email, setEmail] = useState('');
 
   const [password1, setPassword1] = useState('');
@@ -82,7 +86,7 @@ const SignUp = ({navigation}) => {
 
         <Button
           title="Create Account" style={styles.createAccountBtn}
-          onPress={() => isFormValid(email,password1,password2,termsConditionsCheckbox,eulaCheckbox)}
+          onPress={() => validateForm(email,password1,password2,termsConditionsCheckbox,eulaCheckbox)}
         />
       </View>
 
@@ -90,7 +94,7 @@ const SignUp = ({navigation}) => {
   );
 };
 
-const isFormValid = (email,password1,password2,agreement1,agreement2) => {
+const validateForm = (email,password1,password2,agreement1,agreement2) => {
   let isEmailValid = false;
   let arePasswordsMatching = false;
   let arePasswordsStrong = false;
@@ -131,7 +135,7 @@ const validatePasswordStrength = (password1, password2) => {
 }
 
 const validateMatchingPassword = (password1, password2) => {
-  if (password1.length > 7 && password1 === password2) {
+  if (password1 === password2) {
     return true;
   }
   return false;

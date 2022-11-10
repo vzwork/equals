@@ -27,7 +27,7 @@ const SignIn = ({navigation}) => {
           style={styles.textInput}
         />
 
-        <View style={styles.btnContainer}>
+        <View style={styles.buttonContainer}>
           <Button
             title='Sign In'
             style={styles.btnLogin}
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
     borderBottomColor: '#BCE0FD',
     marginBottom: 30
   },
-  btnContainer: {
+  buttonContainer: {
     justifyContent: 'center',
     // alignItems: 'center',
   },
