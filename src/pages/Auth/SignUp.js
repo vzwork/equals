@@ -7,6 +7,8 @@ import CheckBox from "@react-native-community/checkbox";
 const SignUp = ({navigation}) => {
   console.log("SignUp")
 
+  const [email, setEmail] = useState('');
+
   const [password1, setPassword1] = useState('');
   const [password2, setPassword2] = useState('');
 
@@ -34,6 +36,7 @@ const SignUp = ({navigation}) => {
         <TextInput
           placeholder=' Enter Email'
           style={styles.textInput}
+          onChangeText={email => setEmail(email)}
         />
 
         <Text style={styles.textInputTitle}>Password</Text>
@@ -77,30 +80,57 @@ const SignUp = ({navigation}) => {
           </View>
         </View>
 
-        <Button title="Create Account" style={styles.createAccountBtn} onPress={() => isFormValid(password1,password2,termsConditionsCheckbox,eulaCheckbox)}/>
+        <Button
+          title="Create Account" style={styles.createAccountBtn}
+          onPress={() => isFormValid(email,password1,password2,termsConditionsCheckbox,eulaCheckbox)}
+        />
       </View>
 
     </View>
   );
 };
 
-const isFormValid = (password1,password2,agreement1,agreement2) => {
-  let isPasswordValid = false;
+const isFormValid = (email,password1,password2,agreement1,agreement2) => {
+  let isEmailValid = false;
+  let arePasswordsMatching = false;
+  let arePasswordsStrong = false;
   let areAgreementsAccepted = false;
 
-  isPasswordValid = validatePassword(password1,password2);
+  isEmailValid = validateEmail(email)
+  arePasswordsMatching = validateMatchingPassword(password1,password2);
+  arePasswordsStrong = validatePasswordStrength(password1,password2)
   areAgreementsAccepted = validateUserAgreements(agreement1,agreement2);
 
-  if (isPasswordValid === true && areAgreementsAccepted === true) {
+  if (isEmailValid === true && arePasswordsMatching === true && arePasswordsStrong === true && areAgreementsAccepted === true) {
     Alert.alert('Success')
-  } else if (isPasswordValid === false) {
+  } else if (arePasswordsMatching === false) {
     Alert.alert('Please enter two matching passwords.')
+  } else if (arePasswordsStrong === false) {
+    Alert.alert('Password is not strong enough.')
   } else if (areAgreementsAccepted === false) {
     Alert.alert('Please accept the agreements.')
+  } else if (isEmailValid === false) {
+    Alert.alert('Invalid email address.')
   }
 }
 
-const validatePassword = (password1, password2) => {
+const validateEmail = (text) => {
+  let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
+  if (reg.test(text) === false) {
+    return false;
+  }
+  return true;
+}
+
+const validatePasswordStrength = (password1, password2) => {
+  let reg = new RegExp("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})");
+  if (reg.test(password1) === true && reg.test(password2) === true) {
+    return true;
+  }
+  return false;
+}
+
+const validateMatchingPassword = (password1, password2) => {
   if (password1.length > 7 && password1 === password2) {
     return true;
   }
