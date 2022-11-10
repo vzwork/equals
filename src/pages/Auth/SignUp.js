@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button, StyleSheet, Text, TextInput, View, Alert, Linking } from 'react-native';
 import CheckBox from "@react-native-community/checkbox";
+import Auth from '../../api/Auth.mjs';
 
 // comment test
 // comment test 2
@@ -18,6 +19,10 @@ const SignUp = ({navigation}) => {
 
   const [termsConditionsCheckbox, setTermsConditionsCheckbox] = useState(false);
   const [eulaCheckbox, setEulaCheckbox] = useState(false);
+
+  const signUp = () => {
+    print(Auth.createUser(email, email, password1));
+  }
 
   return (
     <View style={styles.container}>
@@ -86,7 +91,10 @@ const SignUp = ({navigation}) => {
 
         <Button
           title="Create Account" style={styles.createAccountBtn}
-          onPress={() => validateForm(email,password1,password2,termsConditionsCheckbox,eulaCheckbox)}
+          onPress={() => {
+            isFormValid(email,password1,password2,termsConditionsCheckbox,eulaCheckbox)
+            signUp();
+          }}
         />
       </View>
 
