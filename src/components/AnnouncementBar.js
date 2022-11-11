@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, View, Text } from "react-native";
+import Colors from '../colors/Colors.mjs';
 
 const AnnouncementBar = () => {
 
@@ -8,17 +9,16 @@ const AnnouncementBar = () => {
       <Text style={styles.announcementHeaderText}>Announcements</Text>
     </View>
   )
-
 }
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#3d7eb6'
+    backgroundColor: Colors.accent.primary
   },
   announcementHeaderText: {
     fontWeight: 'bold',
     fontSize: 24,
-    color: 'white',
+    color: Colors.background.primary,
     marginVertical: 12,
     textAlign: 'center'
   }

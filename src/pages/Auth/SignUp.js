@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button, StyleSheet, Text, TextInput, View, Alert, Linking } from 'react-native';
 import CheckBox from "@react-native-community/checkbox";
+import Colors from '../../colors/Colors.mjs';
 
 
 const SignUp = ({navigation}) => {
@@ -155,7 +156,7 @@ const styles = StyleSheet.create({
   },
   equalsText: {
     fontWeight: "bold",
-    color: '#173C6F',
+    color: Colors.accent.secondary,
     fontSize: 52,
     // textAlign: 'center'
   },
@@ -174,29 +175,29 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   loginScreenText: {
-    color: '#41A2FB',
+    color: Colors.accent.secondary,
     fontSize: 16,
     textAlign: 'center'
   },
   textInputTitle: {
     fontSize: 20,
     marginBottom: 5,
-    color: '#000000'
+    color: Colors.text.primary
   },
   textInput: {
     marginBottom: 20,
     borderWidth: 1,
-    borderColor: '#BCE0FD',
+    borderColor: Colors.background.secondary,
     borderRadius: 8,
     fontSize: 18,
-    color: '#3d3d3d'
+    color: Colors.text.secondary
     
   },
   createAccountBtn: {
     fontSize: 20
   },
   hyperlink: {
-    color: '#2499FB',
+    color: Colors.link.primary,
     textAlignVertical: 'center'
   }
 });
