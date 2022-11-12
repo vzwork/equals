@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Button, StyleSheet, Text, TextInput, View, ScrollView} from 'react-native';
 import Colors from '../../colors/Colors.mjs';
 
 const SignIn = ({navigation}) => {
@@ -7,12 +7,13 @@ const SignIn = ({navigation}) => {
 
   return (
     <View style={styles.container}>
-
+    <ScrollView style={{width:'100%'}}>
       <View style={styles.headerContainer}>
         <Text style={styles.headerText}>EQuALS</Text>
         <Text style={styles.welcomeText}>Welcome!</Text>
       </View>
 
+    
       <View style={styles.loginContainer}>
         <Text>Username</Text>
         <TextInput
@@ -26,7 +27,7 @@ const SignIn = ({navigation}) => {
           secureTextEntry={true}
           style={styles.textInput}
         />
-
+      
         <View style={styles.btnContainer}>
           <Button
             title='Sign In'
@@ -34,6 +35,7 @@ const SignIn = ({navigation}) => {
           />
         </View>
       </View>
+      </ScrollView>
 
       <View style={styles.signupContainer}>
         <Text
@@ -51,7 +53,6 @@ const SignIn = ({navigation}) => {
            Forgot your password?
         </Text>
       </View>
-
     </View>
   );
 };

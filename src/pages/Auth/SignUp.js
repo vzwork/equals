@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, StyleSheet, Text, TextInput, View, Alert, Linking } from 'react-native';
+import { Button, StyleSheet, Text, TextInput, View, Alert, Linking, ScrollView } from 'react-native';
 import CheckBox from "@react-native-community/checkbox";
 import Colors from '../../colors/Colors.mjs';
 
@@ -16,6 +16,7 @@ const SignUp = ({navigation}) => {
   const [eulaCheckbox, setEulaCheckbox] = useState(false);
 
   return (
+    <ScrollView style={{width:'100%'}}>
     <View style={styles.container}>
 
       <Text style={styles.loginScreenText} onPress={() => navigation.navigate('SignIn')}>Back to Login Screen</Text>
@@ -85,8 +86,8 @@ const SignUp = ({navigation}) => {
           onPress={() => isFormValid(email,password1,password2,termsConditionsCheckbox,eulaCheckbox)}
         />
       </View>
-
     </View>
+    </ScrollView>
   );
 };
 
