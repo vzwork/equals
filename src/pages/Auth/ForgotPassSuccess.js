@@ -1,10 +1,11 @@
 import React from 'react';
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Button, StyleSheet, Text, TextInput, View, ScrollView } from 'react-native';
 
 const ForgotPassSuccess = ({navigation}) => {
   console.log("ForgotPassSuccess")
 
   return (
+    <ScrollView style={{width:'100%'}}>
     <View style={styles.container}>
 
       <View style={styles.headerContainer}>
@@ -23,10 +24,8 @@ const ForgotPassSuccess = ({navigation}) => {
             Back to Home
         </Text>
       </View>
-
-
-
     </View>
+    </ScrollView>
   );
 };
 

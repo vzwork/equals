@@ -1,13 +1,13 @@
 import React from 'react';
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Button, StyleSheet, Text, TextInput, View, ScrollView } from 'react-native';
 import Colors from '../../colors/Colors.mjs';
 
 const ForgotPass = ({navigation}) => {
   console.log("ForgotPass")
 
   return (
+    <ScrollView style={{width:'100%'}}>
     <View style={styles.container}>
-
       <View style={styles.headerContainer}>
         <Text style={styles.headerText}>EQuALS</Text>
         <Text style={styles.welcomeText}>Request a password reset</Text>
@@ -29,7 +29,6 @@ const ForgotPass = ({navigation}) => {
             onPress={() => navigation.navigate('ForgotPassSuccess')}></Button>
         </View>
       </View>
-
       <View style={styles.signupContainer}>
         <Text
           style={styles.signupText}
@@ -38,6 +37,7 @@ const ForgotPass = ({navigation}) => {
         </Text>
       </View>
     </View>
+    </ScrollView>
   );
 };
 
