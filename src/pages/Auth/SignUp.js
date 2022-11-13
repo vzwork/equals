@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { Button, StyleSheet, Text, TextInput, View, Alert, Linking } from 'react-native';
+import { Button, StyleSheet, Text, TextInput, View, Alert, Linking, ScrollView } from 'react-native';
 import CheckBox from "@react-native-community/checkbox";
-import Auth from '../../api/Auth.mjs';
+import Colors from '../../colors/Colors.mjs';
 
-// comment test
-// comment test 2
+
 const SignUp = ({navigation}) => {
   console.log("SignUp")
 
@@ -20,11 +19,8 @@ const SignUp = ({navigation}) => {
   const [termsConditionsCheckbox, setTermsConditionsCheckbox] = useState(false);
   const [eulaCheckbox, setEulaCheckbox] = useState(false);
 
-  const signUp = () => {
-    print(Auth.createUser(email, email, password1));
-  }
-
   return (
+    <ScrollView style={{width:'100%'}}>
     <View style={styles.container}>
 
       <Text style={styles.loginScreenText} onPress={() => navigation.navigate('SignIn')}>Back to Login Screen</Text>
@@ -98,8 +94,8 @@ const SignUp = ({navigation}) => {
           }}
         />
       </View>
-
     </View>
+    </ScrollView>
   );
 };
 
@@ -169,7 +165,7 @@ const styles = StyleSheet.create({
   },
   equalsText: {
     fontWeight: "bold",
-    color: '#173C6F',
+    color: Colors.accent.secondary,
     fontSize: 52,
     // textAlign: 'center'
   },
@@ -188,29 +184,29 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   loginScreenText: {
-    color: '#41A2FB',
+    color: Colors.accent.secondary,
     fontSize: 16,
     textAlign: 'center'
   },
   textInputTitle: {
     fontSize: 20,
     marginBottom: 5,
-    color: '#000000'
+    color: Colors.text.primary
   },
   textInput: {
     marginBottom: 20,
     borderWidth: 1,
-    borderColor: '#BCE0FD',
+    borderColor: Colors.background.secondary,
     borderRadius: 8,
     fontSize: 18,
-    color: '#3d3d3d'
+    color: Colors.text.secondary
     
   },
   createAccountBtn: {
     fontSize: 20
   },
   hyperlink: {
-    color: '#2499FB',
+    color: Colors.link.primary,
     textAlignVertical: 'center'
   }
 });

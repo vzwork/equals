@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity, Pressable } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
+import Colors from '../colors/Colors.mjs';
 
 const NavBar = () => {
   return (
@@ -41,7 +42,7 @@ const NavBar = () => {
 
 const styles = StyleSheet.create({
   containter: {
-    backgroundColor: '#2499FB',
+    backgroundColor: Colors.accent.primary,
     flexDirection: 'row',
     height: 80,
     alignItems: 'center',

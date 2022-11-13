@@ -1,10 +1,11 @@
 import React from 'react';
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Button, StyleSheet, Text, TextInput, View, ScrollView } from 'react-native';
 
 const ForgotPassSuccess = ({navigation}) => {
   console.log("ForgotPassSuccess")
 
   return (
+    <ScrollView style={{width:'100%'}}>
     <View style={styles.container}>
 
       <View style={styles.headerContainer}>
@@ -23,10 +24,8 @@ const ForgotPassSuccess = ({navigation}) => {
             Back to Home
         </Text>
       </View>
-
-
-
     </View>
+    </ScrollView>
   );
 };
 
@@ -56,16 +55,16 @@ const styles = StyleSheet.create({
     marginBottom: 20
   },
   welcomeText: {
-    color: "#2499FB",
+    color: Colors.accent.secondary,
     fontSize: 30
   },
   signupText: {
-    color: '#41A2FB',
+    color: Colors.text.secondary,
     fontSize: 15
   },
   textInput: {
     borderBottomWidth: 2,
-    borderBottomColor: '#BCE0FD',
+    borderBottomColor: Colors.background.secondary,
     marginBottom: 30
   },
   btnContainer: {

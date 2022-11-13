@@ -1,16 +1,23 @@
 export default Colors = {
   accent: {
-    primary: '#2499FB',
-    secondary: '#173C6F'
+    primary: '#2499FB', // sky blue
+    secondary: '#2b3b52' // from muzli - dark navy 
   },
   text: {
-    primary: '#000',
-    secondary: '#333'
+    primary: '#000', // black
+    secondary: '#333' //charcoal
   },
   button: {
-    primary: '#333'
+    primary: '#333', // charcoal
+    secondary: '#87ab0e' // from muzli - grass green
   },
   link: {
-    primary: '#41A2FB'
+    primary: '#2499FB', // sky blue
+    secondary:'#93a3ad', // from muzli - dark grey
+  },
+  background: {
+    primary: '#e4e2df', // from muzli - light grey 
+    secondary: '#93a3ad', // from muzli - dark grey
+    third: '#ad9f6f' // from website - sand color
   }
 }

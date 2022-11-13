@@ -1,12 +1,13 @@
 import React from 'react';
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Button, StyleSheet, Text, TextInput, View, ScrollView } from 'react-native';
+import Colors from '../../colors/Colors.mjs';
 
 const ForgotPass = ({navigation}) => {
   console.log("ForgotPass")
 
   return (
+    <ScrollView style={{width:'100%'}}>
     <View style={styles.container}>
-
       <View style={styles.headerContainer}>
         <Text style={styles.headerText}>EQuALS</Text>
         <Text style={styles.welcomeText}>Request a password reset</Text>
@@ -28,7 +29,6 @@ const ForgotPass = ({navigation}) => {
             onPress={() => navigation.navigate('ForgotPassSuccess')}></Button>
         </View>
       </View>
-
       <View style={styles.signupContainer}>
         <Text
           style={styles.signupText}
@@ -37,6 +37,7 @@ const ForgotPass = ({navigation}) => {
         </Text>
       </View>
     </View>
+    </ScrollView>
   );
 };
 
@@ -59,36 +60,27 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center'
   },
+
   headerText: {
     textAlign: "left",
     fontSize: 52,
     fontWeight: "bold",
-    color: '#173C6F',
+    color: Colors.text.secondary,
     marginBottom: 20
   },
   welcomeText: {
-    color: "#2499FB",
+    color: Colors.accent.secondary,
     fontSize: 30
   },
   signupText: {
-    color: '#41A2FB',
+    color: Colors.text.secondary,
     fontSize: 15
   },
   textInput: {
     borderBottomWidth: 2,
-    borderBottomColor: '#BCE0FD',
+    borderBottomColor: Colors.background.secondary,
     marginBottom: 30
   },
-  btnContainer: {
-    justifyContent: 'center',
-    // alignItems: 'center',
-  },
-  btnLogin: {
-    // width: '100%',
-    // alignSelf: 'stretch'
-  }
-  
 });
-
 
 export default ForgotPass;
