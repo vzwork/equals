@@ -200,9 +200,8 @@ const styles = StyleSheet.create({
   },
   textInput: {
     marginBottom: 20,
-    borderWidth: 1,
+    borderBottomWidth: 2,
     borderColor: Colors.background.secondary,
-    borderRadius: 8,
     fontSize: 18,
     color: Colors.text.secondary
     
