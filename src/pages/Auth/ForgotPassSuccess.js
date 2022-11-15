@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, StyleSheet, Text, TextInput, View, ScrollView } from 'react-native';
+import { Button, StyleSheet, Text, View, ScrollView } from 'react-native';
 
 const ForgotPassSuccess = ({navigation}) => {
   console.log("ForgotPassSuccess")
@@ -13,13 +13,9 @@ const ForgotPassSuccess = ({navigation}) => {
         <Text style={styles.welcomeText}>Your password reset request successful!</Text>
       </View>
 
-      <View style={styles.loginContainer}>
-        <Text>You should receive your reset link soon at your email address</Text>
-      </View>
-
-      <View style={styles.signupContainer}>
+      <View style={styles.forgotPassContainer}>
         <Text
-          style={styles.signupText}
+          style={styles.backToHomeText}
           onPress={() => navigation.navigate('SignIn')}>
             Back to Home
         </Text>
@@ -37,15 +33,7 @@ const styles = StyleSheet.create({
   headerContainer: {
     flex: 2,
     paddingTop: 20,
-    marginBottom: 40
-  },
-  loginContainer: {
-    flex: 4,
-    marginBottom: 40
-  },
-  signupContainer: {
-    flex: 1,
-    alignItems: 'center'
+    marginBottom: 60
   },
   headerText: {
     textAlign: "left",
@@ -58,23 +46,11 @@ const styles = StyleSheet.create({
     color: Colors.accent.secondary,
     fontSize: 30
   },
-  signupText: {
-    color: Colors.text.secondary,
-    fontSize: 15
+  backToHomeText: {
+    color: Colors.accent.secondary,
+    fontSize: 18,
+    textAlign: 'center'
   },
-  textInput: {
-    borderBottomWidth: 2,
-    borderBottomColor: Colors.background.secondary,
-    marginBottom: 30
-  },
-  btnContainer: {
-    justifyContent: 'center',
-    // alignItems: 'center',
-  },
-  btnLogin: {
-    // width: '100%',
-    // alignSelf: 'stretch'
-  }
 });
 
 export default ForgotPassSuccess;

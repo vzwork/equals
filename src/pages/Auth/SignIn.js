@@ -15,13 +15,13 @@ const SignIn = ({navigation}) => {
 
     
       <View style={styles.loginContainer}>
-        <Text>Username</Text>
+      <Text style={styles.textInputTitle}>Username</Text>
         <TextInput
           placeholder='Enter Username'
           style={styles.textInput}
         />
 
-        <Text>Password</Text>
+      <Text style={styles.textInputTitle}>Password</Text>
         <TextInput
           placeholder=' Enter Password'
           secureTextEntry={true}
@@ -77,6 +77,7 @@ const styles = StyleSheet.create({
   },
   forgotPassContainer: {
     flex: 1,
+    marginBottom: 40,
     alignItems: 'center'
   },
   headerText: {
@@ -92,12 +93,28 @@ const styles = StyleSheet.create({
   },
   signupText: {
     color: Colors.text.secondary,
-    fontSize: 15
+    fontSize: 18
   },
+  /*
   textInput: {
     borderBottomWidth: 2,
-    borderBottomColor: Colors.background.secondary,
+    borderBottomColor: Colors.text.secondary,
     marginBottom: 30
+  },
+  */
+
+  textInputTitle: {
+    fontSize: 18,
+    marginBottom: 5,
+    color: Colors.text.primary //black color
+  },
+  textInput: {
+    marginBottom: 20,
+    borderWidth: 1,
+    borderColor: Colors.background.secondary,
+    borderRadius: 8,
+    fontSize: 15,
+    color: Colors.text.primary
   },
   btnContainer: {
     justifyContent: 'center',
