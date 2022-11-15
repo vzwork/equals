@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, StyleSheet, Text, TextInput, View, Alert, Linking, ScrollView } from 'react-native';
 import CheckBox from "@react-native-community/checkbox";
 import Colors from '../../colors/Colors.mjs';
@@ -8,8 +8,10 @@ import Auth from '../../api/Auth.mjs';
 const SignUp = ({navigation}) => {
   console.log("SignUp")
 
+  // 
   const [isFormValid, setIsFormValid] = useState(false);
 
+  // TEXT INPUT FIELDS
   const [username, setUsername] = useState('');
 
   const [email, setEmail] = useState('');
@@ -17,8 +19,49 @@ const SignUp = ({navigation}) => {
   const [password1, setPassword1] = useState('');
   const [password2, setPassword2] = useState('');
 
+  // USER AGREEMENTS
   const [termsConditionsCheckbox, setTermsConditionsCheckbox] = useState(false);
   const [eulaCheckbox, setEulaCheckbox] = useState(false);
+
+  // WARNING MESSAGES
+  const [usernameMessage, setUsernameMessage] = useState('');
+  const [emailMessage, setEmailMessage] = useState('');
+  const [password1Message, setPassword1Message] = useState('');
+  const [password2Message, setPassword2Message] = useState('');
+
+  // For populating text input warning messages.
+  useEffect(() => {
+
+    // Email
+    if (email.length === 0) {
+      setEmailMessage('');
+    } if (isEmailValid(email)) {
+      setEmailMessage('');
+    } else if (email.length != 0 && !isEmailValid(email)) {
+      setEmailMessage('Please enter a valid email.')
+    }
+
+    // Password 1
+    if (password1.length === 0) {
+      setPassword1Message('');
+    } if (isPasswordValid(password1)) {
+      setPassword1Message('');
+    } else if (password1.length != 0 && !isPasswordValid(password1)) {
+      setPassword1Message('Invalid password.');
+    }
+
+    // Password 2 & checking for match
+    if (password2.length === 0) {
+      setPassword2Message('');
+    } if (isPasswordValid(password2)) {
+      setPassword2Message('');
+    } else if (password2.length != 0 && !isPasswordValid(password2)) {
+      setPassword2Message('Invalid password.');
+    } else if (password1 != password2) {
+      setPassword2Message('Passwords don\'t match.');
+    }
+
+  })
 
   const signUp = () => {
     print(Auth.createUser(email, email, password1));
@@ -35,30 +78,46 @@ const SignUp = ({navigation}) => {
         <Text style={styles.viewTitle}>Account Creation</Text>
       </View>
 
+      {/* USERNAME */}
       <View style={styles.createAccountContainer}>
-        <Text style={styles.textInputTitle}>Username</Text>
+        <View style={styles.inputHeaderContainer}>
+          <Text style={styles.textInputTitle}>Username</Text>
+          <Text styles={styles.inputMessageText}>{usernameMessage}</Text>
+        </View>
         <TextInput
           placeholder='Enter Username'
           style={styles.textInput}
           onChangeText={username => setUsername(username)}
         />
 
-        <Text style={styles.textInputTitle}>Email Address</Text>
+        {/* EMAIL */}
+        <View style={styles.inputHeaderContainer}>
+          <Text style={styles.textInputTitle}>Email Address</Text>
+          <Text styles={styles.inputMessageText}>{emailMessage}</Text>
+        </View>
         <TextInput
           placeholder=' Enter Email'
           style={styles.textInput}
           onChangeText={email => setEmail(email)}
         />
 
-        <Text style={styles.textInputTitle}>Password</Text>
+        {/* PASSWORD 1 */}
+        <View style={styles.inputHeaderContainer}>
+          <Text style={styles.textInputTitle}>Enter Password</Text>
+          <Text styles={styles.inputMessageText}>{password1Message}</Text>
+        </View>
         <TextInput
-          placeholder='Enter Username'
+          placeholder='Enter Password'
           secureTextEntry={true}
           style={styles.textInput}
           onChangeText={password => setPassword1(password)}
         />
 
-        <Text style={styles.textInputTitle}>Confirm Password</Text>
+        {/* PASSWORD 2 */}
+        <View style={styles.inputHeaderContainer}>
+          <Text style={styles.textInputTitle}>Confirm Password</Text>
+          <Text styles={styles.inputMessageText}>{password2Message}</Text>
+        </View>
         <TextInput
           placeholder=' Enter Password'
           secureTextEntry={true}
@@ -66,6 +125,8 @@ const SignUp = ({navigation}) => {
           onChangeText={password => setPassword2(password)}
         />
 
+
+        {/* USER AGREEMENTS */}
         <View style={styles.userAgreementContainer}>
           <View style={styles.singleAgreementContainer}>
             <CheckBox 
@@ -91,10 +152,10 @@ const SignUp = ({navigation}) => {
           </View>
         </View>
 
+        {/* CREATE ACCOUNT BUTTON */}
         <Button
           title="Create Account" style={styles.createAccountBtn}
           onPress={() => {
-            validateForm(email,password1,password2,termsConditionsCheckbox,eulaCheckbox)
             signUp();
           }}
         />
@@ -104,31 +165,7 @@ const SignUp = ({navigation}) => {
   );
 };
 
-const validateForm = (email,password1,password2,agreement1,agreement2) => {
-  let isEmailValid = false;
-  let arePasswordsMatching = false;
-  let arePasswordsStrong = false;
-  let areAgreementsAccepted = false;
-
-  isEmailValid = validateEmail(email)
-  arePasswordsMatching = validateMatchingPassword(password1,password2);
-  arePasswordsStrong = validatePasswordStrength(password1,password2)
-  areAgreementsAccepted = validateUserAgreements(agreement1,agreement2);
-
-  if (isEmailValid === true && arePasswordsMatching === true && arePasswordsStrong === true && areAgreementsAccepted === true) {
-    Alert.alert('Success')
-  } else if (arePasswordsMatching === false) {
-    Alert.alert('Please enter two matching passwords.')
-  } else if (arePasswordsStrong === false) {
-    Alert.alert('Password is not strong enough.')
-  } else if (areAgreementsAccepted === false) {
-    Alert.alert('Please accept the agreements.')
-  } else if (isEmailValid === false) {
-    Alert.alert('Invalid email address.')
-  }
-}
-
-const validateEmail = (text) => {
+const isEmailValid = (text) => {
   let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
   if (reg.test(text) === false) {
     return false;
@@ -136,7 +173,7 @@ const validateEmail = (text) => {
   return true;
 }
 
-const validatePasswordStrength = (password1, password2) => {
+const isPasswordValid = (password1, password2) => {
   let reg = new RegExp("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})");
   if (reg.test(password1) === true && reg.test(password2) === true) {
     return true;
@@ -168,6 +205,12 @@ const styles = StyleSheet.create({
     marginVertical: 25,
     alignItems: 'center'
   },
+  inputHeaderContainer: {
+    flexDirection: 'row'
+  },
+  inputMessageText: {
+    color: Colors.text.warning
+  },
   equalsText: {
     fontWeight: "bold",
     color: Colors.accent.secondary,
@@ -179,7 +222,7 @@ const styles = StyleSheet.create({
     fontSize: 22
   },
   createAccountContainer: {
-    
+    justifyContent: 'flex-end'
   },
   userAgreementContainer: {
     margin: 20
