@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, StyleSheet, Text, TextInput, View, ScrollView} from 'react-native';
 import Colors from '../../colors/Colors.mjs';
+import Auth from '../../api/Auth.mjs';
 
 const SignIn = ({navigation}) => {
   console.log("SignIn")
+
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  const signIn = () => {
+    print(Auth.signInWithUserName(username, password));
+  }
 
   return (
     <View style={styles.container}>
@@ -19,6 +27,7 @@ const SignIn = ({navigation}) => {
         <TextInput
           placeholder='Enter Username'
           style={styles.textInput}
+          onChangeText={text => setUsername(text)}
         />
 
         <Text>Password</Text>
@@ -26,6 +35,7 @@ const SignIn = ({navigation}) => {
           placeholder=' Enter Password'
           secureTextEntry={true}
           style={styles.textInput}
+          onChangeText={text => setPassword(text)}
         />
 
         <View style={styles.buttonContainer}>

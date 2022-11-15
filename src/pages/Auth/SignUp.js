@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button, StyleSheet, Text, TextInput, View, Alert, Linking, ScrollView } from 'react-native';
 import CheckBox from "@react-native-community/checkbox";
 import Colors from '../../colors/Colors.mjs';
+import Auth from '../../api/Auth.mjs';
 
 
 const SignUp = ({navigation}) => {
@@ -18,6 +19,10 @@ const SignUp = ({navigation}) => {
 
   const [termsConditionsCheckbox, setTermsConditionsCheckbox] = useState(false);
   const [eulaCheckbox, setEulaCheckbox] = useState(false);
+
+  const signUp = () => {
+    print(Auth.createUser(email, email, password1));
+  }
 
   return (
     <ScrollView style={{width:'100%'}}>
