@@ -217,9 +217,10 @@ const styles = StyleSheet.create({
     fontSize: 52,
     // textAlign: 'center'
   },
+
+  //Text:Account Creation
   viewTitle: {
-    // textAlign: 'center',
-    fontSize: 22
+    fontSize: 18
   },
   createAccountContainer: {
     justifyContent: 'flex-end'
@@ -231,20 +232,25 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center'
   },
+
+  // Back to login screen
   loginScreenText: {
     color: Colors.accent.secondary,
-    fontSize: 16,
+    fontSize: 18,
     textAlign: 'center'
   },
+
+  //Title: Username, email address etc
   textInputTitle: {
-    fontSize: 20,
+    fontSize: 18,
     marginBottom: 5,
-    color: Colors.text.primary
+    color: Colors.text.primary //black color
   },
   textInput: {
     marginBottom: 20,
-    borderBottomWidth: 2,
+    borderWidth: 1,
     borderColor: Colors.background.secondary,
+    borderRadius: 8,
     fontSize: 18,
     color: Colors.text.secondary
     
