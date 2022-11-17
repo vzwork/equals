@@ -8,9 +8,6 @@ import Auth from '../../api/Auth.mjs';
 const SignUp = ({navigation}) => {
   console.log("SignUp")
 
-  // 
-  const [isFormValid, setIsFormValid] = useState(false);
-
   // TEXT INPUT FIELDS
   const [username, setUsername] = useState('');
 
@@ -29,36 +26,63 @@ const SignUp = ({navigation}) => {
   const [password1Message, setPassword1Message] = useState('');
   const [password2Message, setPassword2Message] = useState('');
 
-  // For populating text input warning messages.
+  // Validating user input
+  const [isEmailValid, setIsEmailValid] = useState(false);
+  const [isPasswordValid, setIsPasswordValid] = useState(false);
+
+  // RegEx for email and password
+  const emailRegEx = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
+  const passwordRegExFull = /(?=.*[0-9])*(?=.*[!@#$%^&*()\-__+.])/;
+  const passwordNumberRegEx = /(?=.*[0-9])/;
+  const passwordSpecialCharRegEx = /(?=.*[!@#$%^&*()\-__+.])/;
+
+  // For populating text input warning messages
   useEffect(() => {
 
     // Email
     if (email.length === 0) {
       setEmailMessage('');
-    } if (isEmailValid(email)) {
+      setIsEmailValid(false);
+    } else if (email.length != 0 && !email.match(emailRegEx)) {
+      setEmailMessage('Please enter a valid email.');
+      setIsEmailValid(false);
+    } else if (email.match(emailRegEx)) {
       setEmailMessage('');
-    } else if (email.length != 0 && !isEmailValid(email)) {
-      setEmailMessage('Please enter a valid email.')
+      setIsEmailValid(true);
     }
 
     // Password 1
     if (password1.length === 0) {
       setPassword1Message('');
-    } if (isPasswordValid(password1)) {
+    }  else if (password1.length < 8) {
+      setPassword1Message('Must be at least 8 characters.');
+    } else if (!password1.match(passwordNumberRegEx)) {
+      setPassword1Message('Needs at least 1 number.');
+    } else if (!password1.match(passwordSpecialCharRegEx)) {
+      setPassword1Message('Needs at least 1 special character.');
+    } else if (password1.length >= 8 && password1.match(passwordRegExFull)) {
       setPassword1Message('');
-    } else if (password1.length != 0 && !isPasswordValid(password1)) {
-      setPassword1Message('Invalid password.');
     }
 
-    // Password 2 & checking for match
+    // Password 2 & checking for match to password 1
+    // This is what sets isPasswordValid
     if (password2.length === 0) {
       setPassword2Message('');
-    } if (isPasswordValid(password2)) {
-      setPassword2Message('');
-    } else if (password2.length != 0 && !isPasswordValid(password2)) {
-      setPassword2Message('Invalid password.');
+      setIsPasswordValid(false);
+    }  else if (password2.length < 8) {
+      setPassword2Message('Must be at least 8 characters.');
+      setIsPasswordValid(false);
+    } else if (!password2.match(passwordNumberRegEx)) {
+      setPassword2Message('Needs at least 1 number.');
+      setIsPasswordValid(false);
+    } else if (!password2.match(passwordSpecialCharRegEx)) {
+      setPassword2Message('Needs at least 1 special character.');
+      setIsPasswordValid(false);
     } else if (password1 != password2) {
-      setPassword2Message('Passwords don\'t match.');
+      setPassword2Message('Passwords must match');
+    } else if (password2.length >= 8 && password2.match(passwordRegExFull) && password1 === password2) {
+      setPassword2Message('');
+      setIsPasswordValid(true);
     }
 
   })
@@ -165,29 +189,6 @@ const SignUp = ({navigation}) => {
   );
 };
 
-const isEmailValid = (text) => {
-  let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
-  if (reg.test(text) === false) {
-    return false;
-  }
-  return true;
-}
-
-const isPasswordValid = (password1, password2) => {
-  let reg = new RegExp("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})");
-  if (reg.test(password1) === true && reg.test(password2) === true) {
-    return true;
-  }
-  return false;
-}
-
-const validateMatchingPassword = (password1, password2) => {
-  if (password1 === password2) {
-    return true;
-  }
-  return false;
-}
-
 const validateUserAgreements = (agreement1, agreement2) => {
   if (agreement1 === true && agreement2 === true) {
     return true;
@@ -206,7 +207,8 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   inputHeaderContainer: {
-    flexDirection: 'row'
+    flexDirection: 'row',
+    justifyContent: 'space-between'
   },
   inputMessageText: {
     color: Colors.text.warning
