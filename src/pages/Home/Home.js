@@ -1,14 +1,64 @@
-import React from 'react';
-import { Text, View } from 'react-native';
+import React from "react";
+import { View, Text, StyleSheet, Button } from "react-native";
+import AnnouncementBar from "../../components/AnnouncementBar";
 
-const Home = () => {
+import NavBar from "../../components/NavBar";
+
+const Homepage = () => {
   return (
-    <View>
-      <Text>
-        Home
-      </Text>
-    </View>
-  );
-};
+    <View style={styles.container}>
 
-export default Home;
+      <View style={styles.contentContainer}>
+
+        <View style={styles.headerContainer}>
+          <Text style={styles.headerText}>EQuALS</Text>
+        </View>
+
+        <AnnouncementBar />
+
+        <View style={styles.examContainer}>
+          <Text style={styles.examHeaderText}>Choose Your Exam Topic:</Text>
+          {/* Not sure if this button is really necessary? */}
+          <Button title="View All Exam Topics" />
+        </View>
+
+      </View>
+
+      <NavBar style={styles.navbar}/>
+    
+    </View>
+  )
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'space-between'
+  },
+  contentContainer: {
+    // margin: 20
+  },
+  headerContainer: {
+    marginVertical: 20
+  },
+  examContainer: {
+    margin: 20 
+  },
+  navbar: {
+  },
+  headerText: {
+    textAlign: "center",
+    fontSize: 40,
+    fontWeight: "bold",
+    color: '#173C6F',
+    // marginBottom: 20
+  },
+  examHeaderText: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: 'black',
+    marginBottom: 20
+  }
+});
+
+export default Homepage;
