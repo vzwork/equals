@@ -7,6 +7,7 @@ import SignUp from './src/pages/Auth/SignUp';
 import ForgotPass from './src/pages/Auth/ForgotPass';
 import ForgotPassSuccess from './src/pages/Auth/ForgotPassSuccess';
 import Home from './src/pages/Home/Home';
+import TestSetup from './src/pages/Exam/TestSetup';
 
 const AuthContext = createContext(false);
 
@@ -23,6 +24,7 @@ const App = () => {
             <Stack.Screen name="SignUp" component={SignUp} options={{ headerShown: false }} />
             <Stack.Screen name="ForgotPass" component={ForgotPass} options={{ headerShown: false }} />
             <Stack.Screen name="ForgotPassSuccess" component={ForgotPassSuccess} options={{ headerShown: false }} />
+            <Stack.Screen name="TestSetup" component={TestSetup} options={{ headerShown: false }} />
           </Stack.Navigator>
         : <Stack.Navigator initialRouteName='Home'>
             <Stack.Screen name="Home" component={Home} />
