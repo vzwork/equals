@@ -63,6 +63,14 @@ const SignIn = ({navigation}) => {
            Forgot your password?
         </Text>
       </View>
+
+      <View style={styles.forgotPassContainer}>
+        <Text
+          style={styles.signupText}
+          onPress={() => navigation.navigate('TestSetup')}>
+           Setup Test
+        </Text>
+      </View>
     </View>
   );
 };
