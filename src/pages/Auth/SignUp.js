@@ -29,6 +29,11 @@ const SignUp = ({navigation}) => {
   // Validating user input
   const [isEmailValid, setIsEmailValid] = useState(false);
   const [isPasswordValid, setIsPasswordValid] = useState(false);
+  const [isUsernameValid, setIsUsernameValid] = useState(false);
+  const [areAgreementsAccepted, setAreAgreementsAccepted] = useState (false);
+
+  // Validating whether form is completed.
+  const [isFormValid, setIsFormValid] = useState(false);
 
   // RegEx for email and password
   const emailRegEx = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
@@ -36,7 +41,7 @@ const SignUp = ({navigation}) => {
   const passwordNumberRegEx = /(?=.*[0-9])/;
   const passwordSpecialCharRegEx = /(?=.*[!@#$%^&*()\-__+.])/;
 
-  // For populating text input warning messages
+  // For populating text input warning messages and validation
   useEffect(() => {
 
     // Email
@@ -83,6 +88,26 @@ const SignUp = ({navigation}) => {
     } else if (password2.length >= 8 && password2.match(passwordRegExFull) && password1 === password2) {
       setPassword2Message('');
       setIsPasswordValid(true);
+    }
+
+    if (username === '') {
+      setIsUsernameValid(false);
+    } else {
+      setIsUsernameValid(true);
+    }
+
+    if (termsConditionsCheckbox && eulaCheckbox) {
+      setAreAgreementsAccepted(true);
+    } else {
+      setAreAgreementsAccepted(false);
+    }
+
+
+    // Determining if the form is valid to be submitted
+    if (isPasswordValid && isEmailValid && isUsernameValid && areAgreementsAccepted) {
+      setIsFormValid(true);
+    } else {
+      setIsFormValid(false);
     }
 
   })
@@ -180,7 +205,11 @@ const SignUp = ({navigation}) => {
         <Button
           title="Create Account" style={styles.createAccountBtn}
           onPress={() => {
-            signUp();
+            if (isFormValid) {
+              signUp();
+            } else {
+              alert('Form incomplete.')
+            }
           }}
         />
       </View>

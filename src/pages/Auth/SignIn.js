@@ -16,27 +16,29 @@ const SignIn = ({navigation}) => {
   return (
     <View style={styles.container}>
     <ScrollView style={{width:'100%'}}>
+
+      {/* Signin Header */}
       <View style={styles.headerContainer}>
         <Text style={styles.headerText}>EQuALS</Text>
         <Text style={styles.welcomeText}>Welcome!</Text>
       </View>
 
-    
-      <View style={styles.loginContainer}>
-      <Text style={styles.textInputTitle}>Username</Text>
-        <TextInput
-          placeholder='Enter Username'
-          style={styles.textInput}
-          onChangeText={text => setUsername(text)}
-        />
 
-      <Text style={styles.textInputTitle}>Password</Text>
-        <TextInput
-          placeholder=' Enter Password'
-          secureTextEntry={true}
-          style={styles.textInput}
-          onChangeText={text => setPassword(text)}
-        />
+      <View style={styles.loginContainer}>
+        <Text style={styles.textInputTitle}>Username</Text>
+          <TextInput
+            placeholder='Enter Username'
+            style={styles.textInput}
+            onChangeText={text => setUsername(text)}
+          />
+
+        <Text style={styles.textInputTitle}>Password</Text>
+          <TextInput
+            placeholder=' Enter Password'
+            secureTextEntry={true}
+            style={styles.textInput}
+            onChangeText={text => setPassword(text)}
+          />
 
         <View style={styles.buttonContainer}>
           <Button
