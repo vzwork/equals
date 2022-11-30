@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, StyleSheet, Text, TextInput, View, ScrollView} from 'react-native';
 import Colors from '../../colors/Colors.mjs';
 import Auth from '../../api/Auth.mjs';
@@ -6,8 +6,36 @@ import Auth from '../../api/Auth.mjs';
 const SignIn = ({navigation}) => {
   console.log("SignIn")
 
+  // USER INPUT VARIABLES
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
+  // VALIDATION VARIABLES
+  const [isUsernameValid, setIsUsernameValid] = useState(false);
+  const [isPasswordValid, setIsPasswordValid] = useState(false);
+
+  const [isFormValid, setIsFormValid] = useState(false)
+
+
+  useEffect(() => {
+    if (username === '') {
+      setIsUsernameValid(false);
+    } else {
+      setIsUsernameValid(true);
+    }
+
+    if (password === '') {
+      setIsPasswordValid(false);
+    } else {
+      setIsPasswordValid(true);
+    }
+
+    if (isUsernameValid && isPasswordValid) {
+      setIsFormValid(true);
+    } else {
+      setIsFormValid(false);
+    }
+  });
 
   const signIn = () => {
     print(Auth.signInWithUserName(username, password));
@@ -48,6 +76,13 @@ const SignIn = ({navigation}) => {
             <Button
               title='Sign In'
               style={styles.btnLogin}
+              onPress={() => {
+                if (isFormValid) {
+                  signIn();
+                } else {
+                  alert('Form incomplete.')
+                }
+              }}
             />
           </View>
         </View>

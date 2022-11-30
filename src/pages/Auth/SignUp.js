@@ -6,7 +6,6 @@ import Auth from '../../api/Auth.mjs';
 
 
 const SignUp = ({navigation}) => {
-  console.log("SignUp")
 
   // TEXT INPUT FIELDS
   const [username, setUsername] = useState('');
@@ -110,11 +109,7 @@ const SignUp = ({navigation}) => {
       setIsFormValid(false);
     }
 
-  })
-
-  const signUp = () => {
-    print(Auth.createUser(email, email, password1));
-  }
+  });
 
   return (
     <ScrollView style={{width:'100%'}}>
@@ -206,7 +201,13 @@ const SignUp = ({navigation}) => {
           title="Create Account" style={styles.createAccountBtn}
           onPress={() => {
             if (isFormValid) {
-              signUp();
+              Auth.createUser(username, email, password2)
+              .then(() => {
+
+              })
+              .catch((err) => {
+                alert(err.message)
+              })
             } else {
               alert('Form incomplete.')
             }
