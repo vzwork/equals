@@ -37,8 +37,13 @@ const SignIn = ({navigation}) => {
     }
   });
 
+
+  // Sign In function
   const signIn = () => {
-    print(Auth.signInWithUserName(username, password));
+    Auth.signInWithUserName(username, password)
+    .catch((err) => {
+      alert(err.message);
+    });
   }
 
   return (

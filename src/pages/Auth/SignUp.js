@@ -111,6 +111,15 @@ const SignUp = ({navigation}) => {
 
   });
 
+
+  // Sign up function
+  const signUp = () => {
+    Auth.createUser(username, email, password2)
+    .catch((err) => {
+      alert(err.message)
+    });
+  };
+
   return (
     <ScrollView style={{width:'100%'}}>
     <View style={styles.container}>
@@ -201,13 +210,7 @@ const SignUp = ({navigation}) => {
           title="Create Account" style={styles.createAccountBtn}
           onPress={() => {
             if (isFormValid) {
-              Auth.createUser(username, email, password2)
-              .then(() => {
-
-              })
-              .catch((err) => {
-                alert(err.message)
-              })
+              signUp();
             } else {
               alert('Form incomplete.')
             }

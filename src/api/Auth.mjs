@@ -29,11 +29,11 @@ async function createUser(userName, email, password) {
   
     if (userNameExists) {
       const err = {}
-      err.message = "user name is used"
+      err.message = "Username already taken."
       reject(err)
     } else if (emailExists) {
       const err = {}
-      err.message = "email is used"
+      err.message = "Email already used."
       reject(err)
     } else {
       // good
@@ -68,7 +68,7 @@ async function signInWithUserName(userName, password) {
 
     if (!userNameExists) {
       const err = {}
-      err.message = "user name is not used"
+      err.message = "Username not found."
       reject(err)
     } else {
       const encryptedPassword = sha256(password)
@@ -76,7 +76,7 @@ async function signInWithUserName(userName, password) {
 
       if (!userId) {
         const err = {}
-        err.message = "wrong password"
+        err.message = "Wrong password."
         reject(err)
       } else {
         const user = db.users[userId]
