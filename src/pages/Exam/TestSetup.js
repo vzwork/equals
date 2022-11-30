@@ -1,7 +1,6 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import { View, Text, StyleSheet, Button, Switch } from "react-native";
 import RadioGroup from 'react-native-radio-buttons-group';
-import AnnouncementBar from "../../components/AnnouncementBar";
 import NumericInput from 'react-native-numeric-input';
 import SelectDropdown from 'react-native-select-dropdown'
 
@@ -9,7 +8,7 @@ import SelectDropdown from 'react-native-select-dropdown'
 import NavBar from "../../components/NavBar";
 
 const radioButtonsData = [{
-  id: '1', // acts as primary key, should be unique and non-empty string
+  id: '1',
   label: 'Practice',
   value: 'Practice'
 }, {
@@ -20,9 +19,10 @@ const radioButtonsData = [{
 
 const times = ["15 minutes", "30 minutes", "45 minutes", "1 hour"]
 
-const TestSetup = () => {
+const TestSetup = ({navigation}) => {
 
   const [radioButtons, setRadioButtons] = useState(radioButtonsData)
+  
   function onPressRadioButton(radioButtonsArray) {
       setRadioButtons(radioButtonsArray);
   }
@@ -41,9 +41,7 @@ const TestSetup = () => {
             <Text style={styles.headerText}>EQuALS</Text>
           </View>
   
-          <AnnouncementBar />
-
-          <View>
+          <View style={styles.viewBox}>
             <Text style={styles.optionHeaderText}> Test Mode</Text>
           <RadioGroup 
             radioButtons={radioButtons} 
@@ -52,7 +50,7 @@ const TestSetup = () => {
         />
           </View>
 
-          <View>
+          <View style={styles.viewBox}>
             <Text style={styles.optionHeaderText}> Time Limit</Text>
             <SelectDropdown
               data={times}
@@ -69,7 +67,7 @@ const TestSetup = () => {
             />
           </View>
 
-          <View>
+          <View style={styles.viewBox}>
             <Text style={styles.optionHeaderText}> Number of Questions</Text>
             <NumericInput 
               onChange={value => console.log(value)}
@@ -77,7 +75,7 @@ const TestSetup = () => {
           </View>
 
 
-          <View style={styles.examContainer}>
+          <View style={styles.viewBox}>
             <Text style={styles.optionHeaderText}> Random?</Text>
             <Switch
               trackColor={{ false: "#767577", true: "#81b0ff" }}
@@ -90,7 +88,9 @@ const TestSetup = () => {
         
 
           <View style={styles.examContainer}>
-            <Button title="Start Exam" />
+            <Button title="Start Exam" 
+                    onPress={() => navigation.navigate('QuestionPage')}>
+                    </Button>
           </View>
 
   
@@ -136,6 +136,15 @@ const TestSetup = () => {
     optionHeaderText: {
       fontSize: 17,
       fontWeight: 'bold'
+    },
+    viewBox: {
+      margin: 6,
+      padding:5,
+      borderTopWidth: 2,
+      borderRightWidth: 2,
+      borderColor: "#0398df",
+      borderRadius: 8,
+      backgroundColor: "#e0dfe1"
     }
   });
   export default TestSetup;
