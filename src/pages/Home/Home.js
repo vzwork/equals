@@ -18,7 +18,6 @@ const Homepage = () => {
 
         <View style={styles.examContainer}>
           <Text style={styles.examHeaderText}>Choose Your Exam Topic:</Text>
-          {/* Not sure if this button is really necessary? */}
           <Button title="View All Exam Topics" />
         </View>
 
