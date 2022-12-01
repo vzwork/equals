@@ -4,7 +4,6 @@ import Colors from '../../colors/Colors.mjs';
 import Auth from '../../api/Auth.mjs';
 
 const SignIn = ({navigation}) => {
-  console.log("SignIn")
 
   // USER INPUT VARIABLES
   const [username, setUsername] = useState('');
@@ -42,6 +41,7 @@ const SignIn = ({navigation}) => {
   const signIn = () => {
     Auth.signInWithUserName(username, password)
     .then((res) => {
+      console.log('Sign in successful.')
       console.log(res);
     })
     .catch((err) => {

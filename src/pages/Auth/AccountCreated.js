@@ -11,7 +11,7 @@ const AccountCreated = ({navigation}) => {
 
       <View style={styles.viewHeaderContainer}>
         <Text style={styles.equalsText}>EQuALS </Text>
-        <Text style={styles.viewTitle}>Account Created!</Text>
+        <Text style={styles.textMain}>Account Created!</Text>
       </View>
 
       <Text style={styles.loginScreenText} onPress={() => navigation.navigate('SignIn')}>Back to Login Screen</Text>
@@ -33,8 +33,9 @@ const styles = StyleSheet.create({
   },
 
   //Text:Account Creation
-  viewTitle: {
-    fontSize: 18
+  textMain: {
+    fontSize: 30,
+    marginVertical: 100
   },
   loginScreenText: {
     color: Colors.accent.secondary,
