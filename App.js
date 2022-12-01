@@ -10,6 +10,7 @@ import Home from './src/pages/Home/Home';
 import TestSetup from './src/pages/Exam/TestSetup';
 import QuestionPage from './src/pages/Exam/QuestionPage';
 import AnswerCheck from './src/pages/Exam/AnswerCheck';
+import AccountCreated from './src/pages/Auth/AccountCreated';
 
 const AuthContext = createContext(false);
 
@@ -24,6 +25,7 @@ const App = () => {
         ? <Stack.Navigator initialRouteName='SignIn'>
             <Stack.Screen name="SignIn" component={SignIn} options={{ headerShown: false }} />
             <Stack.Screen name="SignUp" component={SignUp} options={{ headerShown: false }} />
+            <Stack.Screen name="AccountCreated" component={AccountCreated} options={{ headerShown: false }} />
             <Stack.Screen name="ForgotPass" component={ForgotPass} options={{ headerShown: false }} />
             <Stack.Screen name="ForgotPassSuccess" component={ForgotPassSuccess} options={{ headerShown: false }} />
             <Stack.Screen name="TestSetup" component={TestSetup} options={{ headerShown: false }} />

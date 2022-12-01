@@ -115,6 +115,10 @@ const SignUp = ({navigation}) => {
   // Sign up function
   const signUp = () => {
     Auth.createUser(username, email, password2)
+    .then((res) => {
+      console.log(res);
+      navigation.navigate('AccountCreated');
+    })
     .catch((err) => {
       alert(err.message)
     });
