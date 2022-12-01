@@ -41,6 +41,9 @@ const SignIn = ({navigation}) => {
   // Sign In function
   const signIn = () => {
     Auth.signInWithUserName(username, password)
+    .then((res) => {
+      console.log(res);
+    })
     .catch((err) => {
       alert(err.message);
     });
