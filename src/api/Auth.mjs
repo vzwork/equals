@@ -76,7 +76,7 @@ async function signInWithUserName(userName, password) {
 
       if (!userId) {
         const err = {}
-        err.message = "Password incorrect."
+        err.message = "Incorrect password."
         reject(err)
       } else {
         const user = db.users[userId]

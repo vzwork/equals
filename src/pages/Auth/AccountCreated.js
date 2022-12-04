@@ -29,10 +29,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: Colors.accent.secondary,
     fontSize: 52,
-    // textAlign: 'center'
   },
-
-  //Text:Account Creation
   textMain: {
     fontSize: 30,
     marginVertical: 100

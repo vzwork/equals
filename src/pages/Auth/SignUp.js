@@ -128,7 +128,9 @@ const SignUp = ({navigation}) => {
     <ScrollView style={{width:'100%'}}>
     <View style={styles.container}>
 
-      <Text style={styles.loginScreenText} onPress={() => navigation.navigate('SignIn')}>Back to Login Screen</Text>
+      <Text style={styles.loginScreenText} onPress={() => navigation.navigate('SignIn')}>
+        Back to Login Screen
+      </Text>
 
       <View style={styles.viewHeaderContainer}>
         <Text style={styles.equalsText}>EQuALS </Text>
