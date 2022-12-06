@@ -1,10 +1,32 @@
-import React from 'react';
-import { Button, StyleSheet, Text, TextInput, View, ScrollView } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { Button, StyleSheet, Text, TextInput, View, Alert, Linking, ScrollView } from 'react-native';
 import Colors from '../../colors/Colors.mjs';
 
 const ForgotPass = ({navigation}) => {
-  console.log("ForgotPass")
-
+  // TEXT INPUT FIELDS
+  const [email, setEmail] = useState('');
+  // Validating user input
+  const [isEmailValid, setIsEmailValid] = useState(false);
+  
+  // RegEx for email and password
+  const emailRegEx = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
+  // For populating text input warning messages and validation
+  useEffect(() => {
+    // Email
+    if (email.length === 0) {
+      setIsEmailValid(false);
+    } else if (email.length != 0 && !email.match(emailRegEx)) {
+      /*setEmailMessage('Please enter a valid email.');*/
+      setIsEmailValid(false);
+    } else if (email.match(emailRegEx)) {
+     /*setEmailMessage('');*/
+      setIsEmailValid(true);
+    }
+  });
+    // Successful pass function
+    const successfulPass = () => {
+        navigation.navigate('ForgotPassSuccess');
+    };
   return (
     <ScrollView style={{width:'100%'}}>
     <View style={styles.container}>
@@ -12,30 +34,29 @@ const ForgotPass = ({navigation}) => {
         <Text style={styles.headerText}>EQuALS</Text>
         <Text style={styles.welcomeText}>Request a password reset</Text>
       </View>
-
-      <View style={styles.headerContainer}>
-        <Text style={styles.textInputTitle}>Enter EQuALS's email address</Text>
-        <TextInput
-          placeholder='Enter your email'
-          style={styles.textInput}/>
-
-        <View style={styles.btnContainer}>
-          <Button
-            title='Send link'
-            style={styles.btnLogin}
-            onPress={() => navigation.navigate('ForgotPassSuccess')}></Button>
+  {/* EMAIL */}
+  <View style={styles.headerContainer}>
+          <Text style={styles.textInputTitle}>Email Address</Text>
+          {/*<Text styles={styles.inputMessageText}>{emailMessage}</Text>*/}
         </View>
-      </View>
-
-      <View style={styles.forgotPassContainer}>
-        <Text style={styles.backToHomeText}
-          onPress={() => navigation.navigate('SignIn')}>
-            Back to Home
-        </Text>
-      </View>
-    </View>
-    </ScrollView>
-  );
+        <TextInput
+          placeholder='Enter Email'
+          style={styles.textInput}
+          onChangeText={email => setEmail(email)}
+        />
+          <Button
+            title='Send link' style={styles.btnLogin}
+              onPress={() => {
+                if (isEmailValid) {
+                  successfulPass();
+                } else {
+                  alert('Email is invalid.')
+                }
+              }}
+            />
+          </View>
+        </ScrollView>
+    );
 };
 
 const styles = StyleSheet.create({
@@ -57,7 +78,6 @@ const styles = StyleSheet.create({
     marginBottom: 40,
     alignItems: 'center'
   },
-
   // Equals
   headerText: {
     textAlign: "left",
@@ -66,19 +86,16 @@ const styles = StyleSheet.create({
     color: Colors.text.secondary,
     marginBottom: 20
   },
-
   //Reset a password request
   welcomeText: {
     color: Colors.accent.secondary,
     fontSize: 30
   },
-
   //Back to Home
   backToHomeText: {
     color: Colors.text.secondary,
     fontSize: 18
   },
-
 textInputTitle: {
   fontSize: 18,
   marginBottom: 5,
@@ -93,5 +110,4 @@ textInputTitle: {
     color: Colors.text.primary
   },
 });
-
 export default ForgotPass;
