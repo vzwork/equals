@@ -14,7 +14,7 @@ const Homepage = ({navigation}) => {
         <View style={styles.headerContainer}>
         <Image source={require('../../resources/logo/eqals.png')} style={styles.logo}/>
         </View>
-        <AnnouncementBar />
+        <AnnouncementBar/>
 
         <View style={styles.examContainer}>
           <Text style={styles.examHeaderText}>Choose Your Exam Topic:</Text>

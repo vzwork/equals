@@ -6,14 +6,14 @@ const AnnouncementBar = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.announcementHeaderText} >Announcements</Text>
+      <Text style={styles.announcementHeaderText}>Announcements</Text>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: Colors.accent.primary
+    backgroundColor: Colors.accent.secondary
   },
   announcementHeaderText: {
     fontWeight: 'bold',

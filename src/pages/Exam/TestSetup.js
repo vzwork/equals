@@ -17,21 +17,15 @@ const radioButtonsData = [{
 }]
 
 const times = ["15 minutes", "30 minutes", "45 minutes", "1 hour"]
-
 const TestSetup = ({navigation}) => {
-
   const [radioButtons, setRadioButtons] = useState(radioButtonsData)
-  
   function onPressRadioButton(radioButtonsArray) {
       setRadioButtons(radioButtonsArray);
   }
-
   const [isRandom, setRandom] = useState(false);
   const toggleRandom = () => setRandom(previousState => !previousState);
 
-
   return (
-
     <View style={styles.container}>
         <View style={styles.contentContainer}>
           <View style={styles.headerContainer}>
@@ -65,13 +59,11 @@ const TestSetup = ({navigation}) => {
 
           <View style={styles.viewBox}>
             <Text style={styles.optionHeaderText}> Number of Questions</Text>
-            
             <NumericInput 
               onChange={value => console.log(value)}
               maxValue={37}
             />
           </View>
-
 
           <View style={styles.viewBox}>
             <Text style={styles.optionHeaderText}> Random?</Text>
@@ -82,8 +74,6 @@ const TestSetup = ({navigation}) => {
               value={isRandom}
             />
           </View>
-
-        
 
           <View style={styles.examContainer}>
             <Button title="Start Exam" 
@@ -117,10 +107,9 @@ const TestSetup = ({navigation}) => {
     },
     headerText: {
       textAlign: "center",
-      fontSize: 40,
+      fontSize: 18,
       fontWeight: "bold",
-      color: '#173C6F',
-      // marginBottom: 20
+      color: Colors.accent.primary
     },
     examHeaderText: {
       fontSize: 18,
@@ -129,17 +118,19 @@ const TestSetup = ({navigation}) => {
       marginBottom: 20
     },
     optionHeaderText: {
-      fontSize: 17,
+      fontSize: 18,
       fontWeight: 'bold'
     },
     viewBox: {
-      margin: 6,
-      padding:5,
-      borderTopWidth: 2,
-      borderRightWidth: 2,
-      borderColor: "#0398df",
+      marginBottom: 20,
+      //padding:5,
+      borderWidth: 1,
+      //borderTopWidth: 2,
+      //borderRightWidth: 2,
+      borderColor: Colors.background.secondary,
       borderRadius: 8,
-      backgroundColor: "#e0dfe1"
+      fontSize: 18,
+      backgroundColor: Colors.background.primary
     },
     logo: {
       width: 200,
@@ -149,7 +140,7 @@ const TestSetup = ({navigation}) => {
     textInputTitle: {
       fontSize: 18,
       marginBottom: 5,
-      color: Colors.text.primary, //black color
+      color: Colors.text.primary,
     },
     textInput: {
       marginBottom: 20,

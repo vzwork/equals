@@ -42,7 +42,7 @@ const NavBar = () => {
 
 const styles = StyleSheet.create({
   containter: {
-    backgroundColor: Colors.accent.primary,
+    backgroundColor: Colors.background.secondary,
     flexDirection: 'row',
     height: 80,
     alignItems: 'center',

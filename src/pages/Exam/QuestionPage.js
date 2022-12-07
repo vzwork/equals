@@ -21,7 +21,7 @@ const QuestionPage = ({navigation}) => {
       <View style={styles.contentContainer}>
         <View>
         <Image source={require('../../resources/logo/eqals.png')} style={styles.logo}/>
-          <Text style={styles.headerText}>Structual Systems</Text>
+          <Text style={styles.headerText}>Structural Systems</Text>
         </View>
         
         <View style={styles.viewBox}>
@@ -39,14 +39,14 @@ const QuestionPage = ({navigation}) => {
         />
 
 
-        <View style={styles.viewBox}>
+        <View style={styles.textInputTitle}>
           <Text>Question Video</Text>
         </View>
 
-        <View style={styles.viewBox}>
+        <View style={styles.textInputTitle}>
         <TextInput
           placeholder='0.000'
-          style={styles.textInput}
+          style={styles.viewBox}
           onChangeText={answerInput => setAnswerInput(answerInput)}
         />
         </View>
@@ -76,10 +76,11 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     marginBottom: 20,
-    alignItems: 'center'
+    alignItems: 'center',
   },
   headerContainer: {
     marginVertical: 20,
+    alignItems: 'center',
   },
   examContainer: {
     margin: 20,
@@ -89,7 +90,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 40,
     fontWeight: 'bold',
-    color: '#173C6F',
+    color: Colors.accent.secondary,
     // marginBottom: 20
   },
   examHeaderText: {
@@ -99,29 +100,34 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   optionHeaderText: {
-    fontSize: 17,
+    fontSize: 18,
     fontWeight: 'bold',
   },
   viewBox: {
-    margin: 6,
-    padding: 5,
-    borderTopWidth: 2,
-    borderRightWidth: 2,
-    borderColor: '#0398df',
+    marginBottom: 20,
+    borderWidth: 1,
+    borderColor: Colors.background.secondary,
     borderRadius: 8,
-    backgroundColor: '#e0dfe1',
+    fontSize: 18,
+    backgroundColor: Colors.background.primary,
+    color: Colors.text.primary
   },
   imageBox: {
     height: '100%',
     maxHeight: 400,
     width: '100%',
     maxWidth: 400,
-    margin: 5
+    margin: 5, 
   },
   logo: {
     width: 200,
     height: 60,
     marginBottom: 30,
+  },
+  textInputTitle: {
+    fontSize: 20,
+    marginBottom: 5,
+    color: Colors.text.primary,
   },
 });
 export default QuestionPage;
