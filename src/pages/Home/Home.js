@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, StyleSheet, Button} from 'react-native';
+import {View, Text, StyleSheet, Button, Image} from 'react-native';
 import AnnouncementBar from '../../components/AnnouncementBar';
 
 import NavBar from '../../components/NavBar';
@@ -12,7 +12,7 @@ const Homepage = ({navigation}) => {
     <View style={styles.container}>
       <View style={styles.contentContainer}>
         <View style={styles.headerContainer}>
-          <Text style={styles.headerText}>EQuALS</Text>
+        <Image source={require('../../resources/logo/eqals.png')} style={styles.logo}/>
         </View>
 
         <AnnouncementBar />
@@ -48,6 +48,7 @@ const styles = StyleSheet.create({
   },
   headerContainer: {
     marginVertical: 20,
+    alignItems: 'center'
   },
   examContainer: {
     margin: 20,
@@ -65,6 +66,11 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'black',
     marginBottom: 20,
+  },
+  logo: {
+    width: 200,
+    height: 60,
+    marginBottom: 30,
   },
 });
 

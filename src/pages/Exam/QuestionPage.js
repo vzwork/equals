@@ -20,6 +20,10 @@ const QuestionPage = ({navigation}) => {
     <View style={styles.container}>
       <View style={styles.contentContainer}>
         <View>
+        <Image source={require('../../resources/logo/eqals.png')} style={styles.logo}/>
+
+
+
           <Text style={styles.headerText}>Structual Systems</Text>
         </View>
 
@@ -74,6 +78,7 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     marginBottom: 20,
+    alignItems: 'center'
   },
   headerContainer: {
     marginVertical: 20,
@@ -114,7 +119,11 @@ const styles = StyleSheet.create({
     width: '100%',
     maxWidth: 400,
     margin: 5
-
-  }
+  },
+  logo: {
+    width: 200,
+    height: 60,
+    marginBottom: 30,
+  },
 });
 export default QuestionPage;

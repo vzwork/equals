@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { View, Text, StyleSheet, Button, Switch } from "react-native";
+import { View, Text, StyleSheet, Button, Switch, Image } from "react-native";
 import RadioGroup from 'react-native-radio-buttons-group';
 import NumericInput from 'react-native-numeric-input';
 import SelectDropdown from 'react-native-select-dropdown'
@@ -38,7 +38,7 @@ const TestSetup = ({navigation}) => {
         <View style={styles.contentContainer}>
   
           <View style={styles.headerContainer}>
-            <Text style={styles.headerText}>EQuALS</Text>
+            <Image source={require('../../resources/logo/eqals.png')} style={styles.logo}/>
           </View>
   
           <View style={styles.viewBox}>
@@ -113,7 +113,8 @@ const TestSetup = ({navigation}) => {
       // margin: 20
     },
     headerContainer: {
-      marginVertical: 20
+      marginVertical: 20,
+      alignItems: 'center'
     },
     examContainer: {
       margin: 20 
@@ -145,6 +146,11 @@ const TestSetup = ({navigation}) => {
       borderColor: "#0398df",
       borderRadius: 8,
       backgroundColor: "#e0dfe1"
-    }
+    },
+    logo: {
+      width: 200,
+      height: 60,
+      marginBottom: 30,
+    },
   });
   export default TestSetup;

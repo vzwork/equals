@@ -18,6 +18,7 @@ const AnswerCheck = ({navigation}) => {
         <View style={styles.contentContainer}>
   
           <View> 
+          <Image source={require('../../resources/logo/eqals.png')} style={styles.logo}/>
             <Text style={styles.headerText}>Structual Systems</Text> 
           </View>
 
@@ -60,7 +61,8 @@ const AnswerCheck = ({navigation}) => {
       // margin: 20
     },
     headerContainer: {
-      marginVertical: 20
+      marginVertical: 20,
+      alignItems: 'center'
     },
     examContainer: {
       margin: 20 
@@ -95,6 +97,11 @@ const AnswerCheck = ({navigation}) => {
       borderColor: "#0398df",
       borderRadius: 8,
       backgroundColor: "#e0dfe1"
-    }
+    },
+    logo: {
+      width: 200,
+      height: 60,
+      marginBottom: 30,
+    },
   });
   export default AnswerCheck;
