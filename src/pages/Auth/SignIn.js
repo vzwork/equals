@@ -124,7 +124,8 @@ const styles = StyleSheet.create({
   headerContainer: {
     flex: 2,
     paddingTop: 20,
-    marginBottom: 40
+    marginBottom: 40, 
+    alignItems: 'center'
   },
   loginContainer: {
     flex: 4,

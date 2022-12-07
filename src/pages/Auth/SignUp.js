@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Button, StyleSheet, Text, TextInput, View, Alert, Linking, ScrollView } from 'react-native';
+import { Button, StyleSheet, Text, TextInput, View, Alert, Linking, ScrollView, Image } from 'react-native';
 import CheckBox from "@react-native-community/checkbox";
 import Colors from '../../colors/Colors.mjs';
 import Auth from '../../api/Auth.mjs';
@@ -136,7 +136,7 @@ const SignUp = ({navigation}) => {
       <Text style={styles.loginScreenText} onPress={() => navigation.navigate('SignIn')}>Back to Login Screen</Text>
 
       <View style={styles.viewHeaderContainer}>
-        <Text style={styles.equalsText}>EQuALS </Text>
+      <Image source={require('../../resources/logo/eqals.png')} style={styles.logo}/>
         <Text style={styles.viewTitle}>Account Creation</Text>
       </View>
 
@@ -322,7 +322,12 @@ const styles = StyleSheet.create({
   hyperlink: {
     color: Colors.link.primary,
     textAlignVertical: 'center'
-  }
+  }, 
+  logo: {
+    width: 200,
+    height: 60,
+    marginBottom: 30,
+  },
 });
 
 export default SignUp;
