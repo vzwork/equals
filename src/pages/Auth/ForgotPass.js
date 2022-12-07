@@ -36,7 +36,8 @@ const ForgotPass = ({navigation}) => {
       </View>
   {/* EMAIL */}
   <View style={styles.headerContainer}>
-          <Text style={styles.textInputTitle}>Enter the email. We will send you a link to reset your password.</Text>
+          <Text style={styles.textInputTitle}>Enter the email. We will send you 
+          a link to reset your password.</Text>
         </View>
         <TextInput
           placeholder='Enter Email'
@@ -44,7 +45,7 @@ const ForgotPass = ({navigation}) => {
           onChangeText={email => setEmail(email)}
         />
           <Button
-            title='Send link' style={styles.btnLogin}
+            title='Send link' color={Colors.accent.secondary}
               onPress={() => {
                 if (isEmailValid) {
                   successfulPass();
@@ -106,6 +107,9 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     fontSize: 15,
     color: Colors.text.primary
+  },
+  buttonBackground:{
+    backgroundColor: '#173c6f',
   },
 });
 export default ForgotPass;

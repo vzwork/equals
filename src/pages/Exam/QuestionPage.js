@@ -11,8 +11,8 @@ import {
   Icon,
 } from 'react-native';
 import ButtonGroup from 'react-native-button-group';
-
 import NavBar from '../../components/NavBar';
+import Colors from '../../colors/Colors.mjs';
 
 const QuestionPage = ({navigation}) => {
   const [answerInput, setAnswerInput] = useState('');
@@ -21,12 +21,9 @@ const QuestionPage = ({navigation}) => {
       <View style={styles.contentContainer}>
         <View>
         <Image source={require('../../resources/logo/eqals.png')} style={styles.logo}/>
-
-
-
           <Text style={styles.headerText}>Structual Systems</Text>
         </View>
-
+        
         <View style={styles.viewBox}>
           <Text style={styles.examHeaderText}>
           For a basic wind speed of 70 mph the equivalent wind pressure is 12.5 psf.  
@@ -58,7 +55,8 @@ const QuestionPage = ({navigation}) => {
           <ButtonGroup isFloat={true} position={'bottom'}>
             <Button title="back" />
             <Button
-              title="check?"
+              title="check?" 
+              color={Colors.accent.secondary}
               onPress={() => navigation.navigate('AnswerCheck')}
             />
             <Button title="forward" />

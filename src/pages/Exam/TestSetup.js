@@ -3,9 +3,8 @@ import { View, Text, StyleSheet, Button, Switch, Image } from "react-native";
 import RadioGroup from 'react-native-radio-buttons-group';
 import NumericInput from 'react-native-numeric-input';
 import SelectDropdown from 'react-native-select-dropdown'
-
-
 import NavBar from "../../components/NavBar";
+import Colors from '../../colors/Colors.mjs';
 
 const radioButtonsData = [{
   id: '1',
@@ -34,22 +33,19 @@ const TestSetup = ({navigation}) => {
   return (
 
     <View style={styles.container}>
-  
         <View style={styles.contentContainer}>
-  
           <View style={styles.headerContainer}>
             <Image source={require('../../resources/logo/eqals.png')} style={styles.logo}/>
           </View>
-  
+
           <View style={styles.viewBox}>
-            <Text style={styles.optionHeaderText}> Test Mode</Text>
+            <Text style={styles.textInputTitle}> Test Mode</Text>
           <RadioGroup 
-            radioButtons={radioButtons} 
+            radioButtons={radioButtons}
             onPress={onPressRadioButton}
             layout={"row"} 
         />
           </View>
-
           <View style={styles.viewBox}>
             <Text style={styles.optionHeaderText}> Time Limit</Text>
             <SelectDropdown
@@ -69,9 +65,11 @@ const TestSetup = ({navigation}) => {
 
           <View style={styles.viewBox}>
             <Text style={styles.optionHeaderText}> Number of Questions</Text>
+            
             <NumericInput 
               onChange={value => console.log(value)}
-              maxValue={37} />
+              maxValue={37}
+            />
           </View>
 
 
@@ -89,16 +87,12 @@ const TestSetup = ({navigation}) => {
 
           <View style={styles.examContainer}>
             <Button title="Start Exam" 
+            color={Colors.accent.secondary}
                     onPress={() => navigation.navigate('QuestionPage')}>
                     </Button>
           </View>
-
-  
-  
         </View>
-  
         <NavBar style={styles.navbar}/>
-      
     </View>
   )
 }
@@ -151,6 +145,19 @@ const TestSetup = ({navigation}) => {
       width: 200,
       height: 60,
       marginBottom: 30,
+    },
+    textInputTitle: {
+      fontSize: 18,
+      marginBottom: 5,
+      color: Colors.text.primary, //black color
+    },
+    textInput: {
+      marginBottom: 20,
+      borderWidth: 1,
+      borderColor: Colors.background.secondary,
+      borderRadius: 8,
+      fontSize: 18,
+      color: Colors.text.secondary,
     },
   });
   export default TestSetup;

@@ -6,7 +6,7 @@ const AnnouncementBar = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.announcementHeaderText}>Announcements</Text>
+      <Text style={styles.announcementHeaderText} >Announcements</Text>
     </View>
   )
 }

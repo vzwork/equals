@@ -235,6 +235,7 @@ const SignUp = ({navigation}) => {
           <Button
             title="Create Account"
             style={styles.createAccountBtn}
+            color={Colors.accent.secondary}
             onPress={() => {
               if (isFormValid) {
                 signUp();

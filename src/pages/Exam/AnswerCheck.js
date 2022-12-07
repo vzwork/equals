@@ -1,18 +1,13 @@
 import React, {useEffect, useState} from "react";
 import { View, Text, StyleSheet, Button, Image } from "react-native";
 import ButtonGroup from 'react-native-button-group';
-
-
-
 import NavBar from "../../components/NavBar";
-
+import Colors from '../../colors/Colors.mjs';
 
 const AnswerCheck = ({navigation}) => {
   isRight = false
   
-
   return (
-
     <View style={styles.container}>
   
         <View style={styles.contentContainer}>
@@ -32,25 +27,16 @@ const AnswerCheck = ({navigation}) => {
             <Text style={styles.itemHeaderText}>Correct Answer:</Text>
             <Text style={styles.itemHeaderText}>0.0000</Text>
          </View>
-
-
-          
           <ButtonGroup>
             <Button title="back"/>
-
             <Button title="forward"/>
+            color={Colors.accent.secondary}
           </ButtonGroup>
-
-
-  
         </View>
-  
         <NavBar style={styles.navbar}/>
-      
     </View>
   )
 }
-
 
   const styles = StyleSheet.create({
     container: {

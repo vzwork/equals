@@ -85,6 +85,7 @@ const SignIn = ({navigation}) => {
             <Button
               title="Sign In"
               style={styles.btnLogin}
+              color={Colors.accent.secondary}
               onPress={() => {
                 if (isFormValid) {
                   signIn();

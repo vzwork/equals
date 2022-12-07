@@ -15,7 +15,6 @@ export default Colors = {
   link: {
     primary: '#2499FB', // sky blue
     secondary:'#93a3ad', // from muzli - dark grey
-    hyperlink: '#87ab0e', // from muzli - grass green 
   },
   background: {
     primary: '#e4e2df', // from muzli - light grey 
