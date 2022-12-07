@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { Button, StyleSheet, Text, TextInput, View, ScrollView, Image} from 'react-native';
+import { Button, StyleSheet, Text, TextInput, View, ScrollView} from 'react-native';
 import Colors from '../../colors/Colors.mjs';
 import Auth from '../../api/Auth.mjs';
+import {useAuthState, useAuthDispatch, setUser} from './auth-context.js';
 
 const SignIn = ({navigation}) => {
+  const dispatch = useAuthDispatch();
+
+  const {user: loggedUser, status, error} = useAuthState();
+  console.log(status);
 
   // USER INPUT VARIABLES
   const [username, setUsername] = useState('');
@@ -12,9 +17,7 @@ const SignIn = ({navigation}) => {
   // VALIDATION VARIABLES
   const [isUsernameValid, setIsUsernameValid] = useState(false);
   const [isPasswordValid, setIsPasswordValid] = useState(false);
-
-  const [isFormValid, setIsFormValid] = useState(false)
-
+  const [isFormValid, setIsFormValid] = useState(false);
 
   useEffect(() => {
     if (username === '') {
@@ -36,23 +39,22 @@ const SignIn = ({navigation}) => {
     }
   });
 
-
   // Sign In function
   const signIn = () => {
     Auth.signInWithUserName(username, password)
-    .then((res) => {
-      console.log('Sign in successful.')
-      console.log(res);
-    })
-    .catch((err) => {
-      alert(err.message);
-    });
-  }
+      .then(res => {
+        console.log('Sign in successful.');
+        console.log(res);
+        setUser(dispatch, res);
+      })
+      .catch(err => {
+        alert(err.message);
+      });
+  };
 
   return (
     <View style={styles.container}>
-      <ScrollView style={{width:'100%'}}>
-
+      <ScrollView style={{width: '100%'}}>
         {/* Signin Header */}
         <View style={styles.headerContainer}>
         <Image source={require('../../resources/logo/eqals.png')} style={styles.logo}/>
@@ -61,19 +63,18 @@ const SignIn = ({navigation}) => {
 
         {/* Sign In Section */}
         <View style={styles.loginContainer}>
-
           {/* Username Field */}
           <Text style={styles.textInputTitle}>Username</Text>
-            <TextInput
-              placeholder='Enter Username'
-              style={styles.textInput}
-              onChangeText={text => setUsername(text)}
-            />
+          <TextInput
+            placeholder="Enter Username"
+            style={styles.textInput}
+            onChangeText={text => setUsername(text)}
+          />
 
           {/* Password Field */}
           <Text style={styles.textInputTitle}>Password</Text>
           <TextInput
-            placeholder=' Enter Password'
+            placeholder=" Enter Password"
             secureTextEntry={true}
             style={styles.textInput}
             onChangeText={text => setPassword(text)}
@@ -82,13 +83,13 @@ const SignIn = ({navigation}) => {
           {/* Sign In Button */}
           <View style={styles.buttonContainer}>
             <Button
-              title='Sign In'
+              title="Sign In"
               style={styles.btnLogin}
               onPress={() => {
                 if (isFormValid) {
                   signIn();
                 } else {
-                  alert('Form incomplete.')
+                  alert('Form incomplete.');
                 }
               }}
             />
@@ -100,24 +101,15 @@ const SignIn = ({navigation}) => {
         <Text
           style={styles.signupText}
           onPress={() => navigation.navigate('SignUp')}>
-            Don't have an account?  Sign up!
+          Don't have an account? Sign up!
         </Text>
       </View>
-
 
       <View style={styles.forgotPassContainer}>
         <Text
           style={styles.signupText}
           onPress={() => navigation.navigate('ForgotPass')}>
-           Forgot your password?
-        </Text>
-      </View>
-
-      <View style={styles.forgotPassContainer}>
-        <Text
-          style={styles.signupText}
-          onPress={() => navigation.navigate('TestSetup')}>
-           Setup Test
+          Forgot your password?
         </Text>
       </View>
     </View>
@@ -127,46 +119,45 @@ const SignIn = ({navigation}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    margin: 20
+    margin: 20,
   },
   headerContainer: {
     flex: 2,
     paddingTop: 20,
-    marginBottom: 40,
-    alignItems: 'center'
+    marginBottom: 40
   },
   loginContainer: {
     flex: 4,
-    marginBottom: 40
+    marginBottom: 40,
   },
   signupContainer: {
     flex: 1,
-    alignItems: 'center'
+    alignItems: 'center',
   },
   forgotPassContainer: {
     flex: 1,
     marginBottom: 40,
-    alignItems: 'center'
+    alignItems: 'center',
   },
   headerText: {
-    textAlign: "left",
+    textAlign: 'left',
     fontSize: 52,
-    fontWeight: "bold",
+    fontWeight: 'bold',
     color: Colors.accent.secondary,
-    marginBottom: 20
+    marginBottom: 20,
   },
   welcomeText: {
     color: Colors.accent.secondary,
-    fontSize: 30
+    fontSize: 30,
   },
   signupText: {
     color: Colors.text.secondary,
-    fontSize: 18
+    fontSize: 18,
   },
   textInputTitle: {
     fontSize: 18,
     marginBottom: 5,
-    color: Colors.text.primary //black color
+    color: Colors.text.primary, //black color
   },
   textInput: {
     marginBottom: 20,
@@ -174,21 +165,16 @@ const styles = StyleSheet.create({
     borderColor: Colors.background.secondary,
     borderRadius: 8,
     fontSize: 15,
-    color: Colors.text.primary
+    color: Colors.text.primary,
   },
   btnContainer: {
     justifyContent: 'center',
     // alignItems: 'center',
   },
   btnLogin: {
-    color: Colors.link.hyperlink
-  },
-  // logo
-  logo: {
-    width: 200,
-    height: 60,
-    marginBottom: 30,
-  },
+    // width: '100%',
+    // alignSelf: 'stretch'
+  }
 });
 
 export default SignIn;

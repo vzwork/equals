@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {
   View,
   Text,
+  TextInput,
   StyleSheet,
   Button,
   Switch,
@@ -14,6 +15,7 @@ import ButtonGroup from 'react-native-button-group';
 import NavBar from '../../components/NavBar';
 
 const QuestionPage = ({navigation}) => {
+  const [answerInput, setAnswerInput] = useState('');
   return (
     <View style={styles.container}>
       <View style={styles.contentContainer}>
@@ -23,25 +25,29 @@ const QuestionPage = ({navigation}) => {
 
         <View style={styles.viewBox}>
           <Text style={styles.examHeaderText}>
-            Regarding alterations and repairs to existing structures, which of
-            the following statements is correct?
+          For a basic wind speed of 70 mph the equivalent wind pressure is 12.5 psf.  
+          If the basic wind speed doubled to 140 mph, the equivalent wind pressure would be most nearly ______ psf?
           </Text>
         </View>
+        
+        <Image
+          source={{
+            uri: 'http://www.standout-cabin-designs.com/images/cottage-floor-plans11.JPG',
+          }}
+          style={styles.imageBox}
+        />
 
-        <View>
-          <Image
-            source={{
-              uri: 'http://www.standout-cabin-designs.com/images/cottage-floor-plans11.JPG',
-            }}
-          />
-        </View>
 
         <View style={styles.viewBox}>
           <Text>Question Video</Text>
         </View>
 
         <View style={styles.viewBox}>
-          <Text>answer space</Text>
+        <TextInput
+          placeholder='0.000'
+          style={styles.textInput}
+          onChangeText={answerInput => setAnswerInput(answerInput)}
+        />
         </View>
 
         <View style={styles.bottom}>
@@ -102,5 +108,13 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     backgroundColor: '#e0dfe1',
   },
+  imageBox: {
+    height: '100%',
+    maxHeight: 400,
+    width: '100%',
+    maxWidth: 400,
+    margin: 5
+
+  }
 });
 export default QuestionPage;
