@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Button, StyleSheet, Text, TextInput, View, ScrollView} from 'react-native';
+import { Button, StyleSheet, Text, TextInput, View, ScrollView, Image} from 'react-native';
 import Colors from '../../colors/Colors.mjs';
 import Auth from '../../api/Auth.mjs';
 import {useAuthState, useAuthDispatch, setUser} from './auth-context.js';
@@ -174,7 +174,12 @@ const styles = StyleSheet.create({
   btnLogin: {
     // width: '100%',
     // alignSelf: 'stretch'
-  }
+  }, 
+  logo: {
+    width: 200,
+    height: 60,
+    marginBottom: 30,
+  },
 });
 
 export default SignIn;
