@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Button, StyleSheet, Text, TextInput, View, Alert, Linking, ScrollView } from 'react-native';
+import { Button, StyleSheet, Text, TextInput, View, Alert, Linking, ScrollView, Image } from 'react-native';
 import Colors from '../../colors/Colors.mjs';
 
 const ForgotPass = ({navigation}) => {
@@ -29,9 +29,12 @@ const ForgotPass = ({navigation}) => {
     };
   return (
     <ScrollView style={{width:'100%'}}>
+    
     <View style={styles.container}>
       <View style={styles.headerContainer}>
+      { /* <Image source={require('../../resources/logo/questionImage.jpg')} /> */}
         <Text style={styles.headerText}>EQuALS</Text>
+       
         <Text style={styles.welcomeText}>Request a password reset</Text>
       </View>
   {/* EMAIL */}
