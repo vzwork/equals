@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Button, StyleSheet, Text, TextInput, View, ScrollView} from 'react-native';
+import { Button, StyleSheet, Text, TextInput, View, ScrollView, Image} from 'react-native';
 import Colors from '../../colors/Colors.mjs';
 import Auth from '../../api/Auth.mjs';
 
@@ -10,7 +10,7 @@ const AccountCreated = ({navigation}) => {
     <View style={styles.container}>
 
       <View style={styles.viewHeaderContainer}>
-        <Text style={styles.equalsText}>EQuALS </Text>
+      <Image source={require('../../resources/logo/eqals.png')} style={styles.logo}/>
         <Text style={styles.textMain}>Account Created!</Text>
       </View>
 
@@ -31,7 +31,6 @@ const styles = StyleSheet.create({
     fontSize: 52,
     // textAlign: 'center'
   },
-
   //Text:Account Creation
   textMain: {
     fontSize: 30,
@@ -41,7 +40,12 @@ const styles = StyleSheet.create({
     color: Colors.accent.secondary,
     fontSize: 18,
     textAlign: 'center'
-  }
+  },
+  logo: {
+    width: 200,
+    height: 60,
+    marginBottom: 30,
+  },
 });
 
 export default AccountCreated;

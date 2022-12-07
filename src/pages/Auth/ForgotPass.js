@@ -29,18 +29,14 @@ const ForgotPass = ({navigation}) => {
     };
   return (
     <ScrollView style={{width:'100%'}}>
-    
     <View style={styles.container}>
       <View style={styles.headerContainer}>
-      { /* <Image source={require('../../resources/logo/questionImage.jpg')} /> */}
-        <Text style={styles.headerText}>EQuALS</Text>
-       
+        <Image source={require('../../resources/logo/eqals.png')} style={styles.logo}/>
         <Text style={styles.welcomeText}>Request a password reset</Text>
       </View>
   {/* EMAIL */}
   <View style={styles.headerContainer}>
-          <Text style={styles.textInputTitle}>Email Address</Text>
-          {/*<Text styles={styles.inputMessageText}>{emailMessage}</Text>*/}
+          <Text style={styles.textInputTitle}>Enter the email. We will send you a link to reset your password.</Text>
         </View>
         <TextInput
           placeholder='Enter Email'
@@ -53,7 +49,7 @@ const ForgotPass = ({navigation}) => {
                 if (isEmailValid) {
                   successfulPass();
                 } else {
-                  alert('Email is invalid.')
+                  alert('Please enter valid email address.')
                 }
               }}
             />
@@ -70,7 +66,8 @@ const styles = StyleSheet.create({
   headerContainer: {
     flex: 2,
     paddingTop: 20,
-    marginBottom: 40
+    marginBottom: 40,
+    alignItems: 'center'
   },
   loginContainer: {
     flex: 4,
@@ -81,13 +78,11 @@ const styles = StyleSheet.create({
     marginBottom: 40,
     alignItems: 'center'
   },
-  // Equals
-  headerText: {
-    textAlign: "left",
-    fontSize: 52,
-    fontWeight: "bold",
-    color: Colors.text.secondary,
-    marginBottom: 20
+  // logo
+  logo: {
+    width: 200,
+    height: 60,
+    marginBottom: 30,
   },
   //Reset a password request
   welcomeText: {
@@ -99,11 +94,11 @@ const styles = StyleSheet.create({
     color: Colors.text.secondary,
     fontSize: 18
   },
-textInputTitle: {
+  textInputTitle: {
   fontSize: 18,
-  marginBottom: 5,
+  marginTop: 10,
   color: Colors.text.primary //black color
-},
+  },
   textInput: {
     marginBottom: 20,
     borderWidth: 1,

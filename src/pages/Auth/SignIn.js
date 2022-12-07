@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Button, StyleSheet, Text, TextInput, View, ScrollView} from 'react-native';
+import { Button, StyleSheet, Text, TextInput, View, ScrollView, Image} from 'react-native';
 import Colors from '../../colors/Colors.mjs';
 import Auth from '../../api/Auth.mjs';
 
@@ -55,7 +55,7 @@ const SignIn = ({navigation}) => {
 
         {/* Signin Header */}
         <View style={styles.headerContainer}>
-          <Text style={styles.headerText}>EQuALS</Text>
+        <Image source={require('../../resources/logo/eqals.png')} style={styles.logo}/>
           <Text style={styles.welcomeText}>Welcome!</Text>
         </View>
 
@@ -132,7 +132,8 @@ const styles = StyleSheet.create({
   headerContainer: {
     flex: 2,
     paddingTop: 20,
-    marginBottom: 40
+    marginBottom: 40,
+    alignItems: 'center'
   },
   loginContainer: {
     flex: 4,
@@ -162,14 +163,6 @@ const styles = StyleSheet.create({
     color: Colors.text.secondary,
     fontSize: 18
   },
-  /*
-  textInput: {
-    borderBottomWidth: 2,
-    borderBottomColor: Colors.text.secondary,
-    marginBottom: 30
-  },
-  */
-
   textInputTitle: {
     fontSize: 18,
     marginBottom: 5,
@@ -188,9 +181,14 @@ const styles = StyleSheet.create({
     // alignItems: 'center',
   },
   btnLogin: {
-    // width: '100%',
-    // alignSelf: 'stretch'
-  }
+    color: Colors.link.hyperlink
+  },
+  // logo
+  logo: {
+    width: 200,
+    height: 60,
+    marginBottom: 30,
+  },
 });
 
 export default SignIn;
