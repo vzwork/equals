@@ -50,7 +50,11 @@ export default function Routes() {
         </Stack.Navigator>
       ) : (
         <Stack.Navigator initialRouteName="Home">
-          <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen
+            name="Home"
+            component={Home} 
+            options={{headerShown: false}}
+          />
           <Stack.Screen
             name="TestSetup"
             component={TestSetup}
