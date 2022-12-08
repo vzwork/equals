@@ -1,15 +1,6 @@
-import React, {useContext, useEffect, useState} from 'react';
-import {
-  Button,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-  Alert,
-  Linking,
-  ScrollView,
-} from 'react-native';
-import CheckBox from '@react-native-community/checkbox';
+import React, { useEffect, useState } from 'react';
+import { Button, StyleSheet, Text, TextInput, View, Alert, Linking, ScrollView, Image } from 'react-native';
+import CheckBox from "@react-native-community/checkbox";
 import Colors from '../../colors/Colors.mjs';
 import Auth from '../../api/Auth.mjs';
 import {setUser, useAuthDispatch} from './auth-context.js';
@@ -139,18 +130,15 @@ const SignUp = ({navigation}) => {
   };
 
   return (
-    <ScrollView style={{width: '100%'}}>
-      <View style={styles.container}>
-        <Text
-          style={styles.loginScreenText}
-          onPress={() => navigation.navigate('SignIn')}>
-          Back to Login Screen
-        </Text>
+    <ScrollView style={{width:'100%'}}>
+    <View style={styles.container}>
 
-        <View style={styles.viewHeaderContainer}>
-          <Text style={styles.equalsText}>EQuALS </Text>
-          <Text style={styles.viewTitle}>Account Creation</Text>
-        </View>
+      <Text style={styles.loginScreenText} onPress={() => navigation.navigate('SignIn')}>Back to Login Screen</Text>
+
+      <View style={styles.viewHeaderContainer}>
+      <Image source={require('../../resources/logo/eqals.png')} style={styles.logo}/>
+        <Text style={styles.viewTitle}>Account Creation</Text>
+      </View>
 
         {/* USERNAME */}
         <View style={styles.createAccountContainer}>
@@ -247,6 +235,7 @@ const SignUp = ({navigation}) => {
           <Button
             title="Create Account"
             style={styles.createAccountBtn}
+            color={Colors.accent.secondary}
             onPress={() => {
               if (isFormValid) {
                 signUp();
@@ -266,7 +255,8 @@ const validateUserAgreements = (agreement1, agreement2) => {
     return true;
   }
   return false;
-};
+}
+
 
 const styles = StyleSheet.create({
   container: {
@@ -332,7 +322,12 @@ const styles = StyleSheet.create({
   },
   hyperlink: {
     color: Colors.link.primary,
-    textAlignVertical: 'center',
+    textAlignVertical: 'center'
+  }, 
+  logo: {
+    width: 200,
+    height: 60,
+    marginBottom: 30,
   },
 });
 

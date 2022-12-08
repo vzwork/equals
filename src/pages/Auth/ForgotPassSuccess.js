@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, StyleSheet, Text, View, ScrollView } from 'react-native';
+import { Button, StyleSheet, Text, View, ScrollView, Image } from 'react-native';
 
 const ForgotPassSuccess = ({navigation}) => {
   console.log("ForgotPassSuccess")
@@ -7,10 +7,9 @@ const ForgotPassSuccess = ({navigation}) => {
   return (
     <ScrollView style={{width:'100%'}}>
     <View style={styles.container}>
-
       <View style={styles.headerContainer}>
-        <Text style={styles.headerText}>EQuALS</Text>
-        <Text style={styles.welcomeText}>Your password reset request successful!</Text>
+        <Image source={require('../../resources/logo/eqals.png')} style={styles.logo}/>
+        <Text style={styles.welcomeText}>Password reset request successful!</Text>
       </View>
 
       <View style={styles.forgotPassContainer}>
@@ -33,14 +32,13 @@ const styles = StyleSheet.create({
   headerContainer: {
     flex: 2,
     paddingTop: 20,
-    marginBottom: 60
+    marginBottom: 60,
+    alignItems: 'center'
   },
-  headerText: {
-    textAlign: "left",
-    fontSize: 52,
-    fontWeight: "bold",
-    color: '#173C6F',
-    marginBottom: 20
+  logo: {
+    width: 200,
+    height: 60,
+    marginBottom: 30,
   },
   welcomeText: {
     color: Colors.accent.secondary,

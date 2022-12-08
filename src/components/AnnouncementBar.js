@@ -13,7 +13,7 @@ const AnnouncementBar = () => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: Colors.accent.primary
+    backgroundColor: Colors.accent.secondary
   },
   announcementHeaderText: {
     fontWeight: 'bold',

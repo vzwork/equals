@@ -1,11 +1,10 @@
 import React, {useState} from "react";
-import { View, Text, StyleSheet, Button, Switch } from "react-native";
+import { View, Text, StyleSheet, Button, Switch, Image } from "react-native";
 import RadioGroup from 'react-native-radio-buttons-group';
 import NumericInput from 'react-native-numeric-input';
 import SelectDropdown from 'react-native-select-dropdown'
-
-
 import NavBar from "../../components/NavBar";
+import Colors from '../../colors/Colors.mjs';
 
 const radioButtonsData = [{
   id: '1',
@@ -18,38 +17,29 @@ const radioButtonsData = [{
 }]
 
 const times = ["15 minutes", "30 minutes", "45 minutes", "1 hour"]
-
 const TestSetup = ({navigation}) => {
-
   const [radioButtons, setRadioButtons] = useState(radioButtonsData)
-  
   function onPressRadioButton(radioButtonsArray) {
       setRadioButtons(radioButtonsArray);
   }
-
   const [isRandom, setRandom] = useState(false);
   const toggleRandom = () => setRandom(previousState => !previousState);
 
-
   return (
-
     <View style={styles.container}>
-  
         <View style={styles.contentContainer}>
-  
           <View style={styles.headerContainer}>
-            <Text style={styles.headerText}>EQuALS</Text>
+            <Image source={require('../../resources/logo/eqals.png')} style={styles.logo}/>
           </View>
-  
+
           <View style={styles.viewBox}>
-            <Text style={styles.optionHeaderText}> Test Mode</Text>
+            <Text style={styles.textInputTitle}> Test Mode</Text>
           <RadioGroup 
-            radioButtons={radioButtons} 
+            radioButtons={radioButtons}
             onPress={onPressRadioButton}
             layout={"row"} 
         />
           </View>
-
           <View style={styles.viewBox}>
             <Text style={styles.optionHeaderText}> Time Limit</Text>
             <SelectDropdown
@@ -71,9 +61,9 @@ const TestSetup = ({navigation}) => {
             <Text style={styles.optionHeaderText}> Number of Questions</Text>
             <NumericInput 
               onChange={value => console.log(value)}
-              maxValue={37} />
+              maxValue={37}
+            />
           </View>
-
 
           <View style={styles.viewBox}>
             <Text style={styles.optionHeaderText}> Random?</Text>
@@ -85,20 +75,14 @@ const TestSetup = ({navigation}) => {
             />
           </View>
 
-        
-
           <View style={styles.examContainer}>
             <Button title="Start Exam" 
+            color={Colors.accent.secondary}
                     onPress={() => navigation.navigate('QuestionPage')}>
                     </Button>
           </View>
-
-  
-  
         </View>
-  
         <NavBar style={styles.navbar}/>
-      
     </View>
   )
 }
@@ -113,7 +97,8 @@ const TestSetup = ({navigation}) => {
       // margin: 20
     },
     headerContainer: {
-      marginVertical: 20
+      marginVertical: 20,
+      alignItems: 'center'
     },
     examContainer: {
       margin: 20 
@@ -122,10 +107,9 @@ const TestSetup = ({navigation}) => {
     },
     headerText: {
       textAlign: "center",
-      fontSize: 40,
+      fontSize: 18,
       fontWeight: "bold",
-      color: '#173C6F',
-      // marginBottom: 20
+      color: Colors.accent.primary
     },
     examHeaderText: {
       fontSize: 18,
@@ -134,17 +118,37 @@ const TestSetup = ({navigation}) => {
       marginBottom: 20
     },
     optionHeaderText: {
-      fontSize: 17,
+      fontSize: 18,
       fontWeight: 'bold'
     },
     viewBox: {
-      margin: 6,
-      padding:5,
-      borderTopWidth: 2,
-      borderRightWidth: 2,
-      borderColor: "#0398df",
+      marginBottom: 20,
+      //padding:5,
+      borderWidth: 1,
+      //borderTopWidth: 2,
+      //borderRightWidth: 2,
+      borderColor: Colors.background.secondary,
       borderRadius: 8,
-      backgroundColor: "#e0dfe1"
-    }
+      fontSize: 18,
+      backgroundColor: Colors.background.primary
+    },
+    logo: {
+      width: 200,
+      height: 60,
+      marginBottom: 30,
+    },
+    textInputTitle: {
+      fontSize: 18,
+      marginBottom: 5,
+      color: Colors.text.primary,
+    },
+    textInput: {
+      marginBottom: 20,
+      borderWidth: 1,
+      borderColor: Colors.background.secondary,
+      borderRadius: 8,
+      fontSize: 18,
+      color: Colors.text.secondary,
+    },
   });
   export default TestSetup;

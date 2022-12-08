@@ -1,8 +1,8 @@
 import React from 'react';
-import {View, Text, StyleSheet, Button} from 'react-native';
+import {View, Text, StyleSheet, Button, Image} from 'react-native';
 import AnnouncementBar from '../../components/AnnouncementBar';
-
 import NavBar from '../../components/NavBar';
+import Colors from '../../colors/Colors.mjs';
 import {signOut, useAuthDispatch} from '../Auth/auth-context';
 
 const Homepage = ({navigation}) => {
@@ -12,27 +12,27 @@ const Homepage = ({navigation}) => {
     <View style={styles.container}>
       <View style={styles.contentContainer}>
         <View style={styles.headerContainer}>
-          <Text style={styles.headerText}>EQuALS</Text>
+        <Image source={require('../../resources/logo/eqals.png')} style={styles.logo}/>
         </View>
-
-        <AnnouncementBar />
+        <AnnouncementBar/>
 
         <View style={styles.examContainer}>
           <Text style={styles.examHeaderText}>Choose Your Exam Topic:</Text>
-          <Button title="View All Exam Topics" />
+          <Button title="View All Exam Topics" color={Colors.accent.secondary} />
           <Button
             title="sign out"
+            color={Colors.accent.secondary}
             onPress={() => {
               signOut(dispatch);
             }}
           />
           <Button
             title="test setup"
+            color={Colors.accent.secondary}
             onPress={() => navigation.navigate('TestSetup')}
           />
         </View>
       </View>
-
       <NavBar style={styles.navbar} />
     </View>
   );
@@ -48,6 +48,7 @@ const styles = StyleSheet.create({
   },
   headerContainer: {
     marginVertical: 20,
+    alignItems: 'center'
   },
   examContainer: {
     margin: 20,
@@ -57,14 +58,20 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 40,
     fontWeight: 'bold',
-    color: '#173C6F',
+    //color: '#87ab0e',
+    color: Colors.accent.secondary,
     // marginBottom: 20
   },
   examHeaderText: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: 'black',
+    color: Colors.accent.secondary,
     marginBottom: 20,
+  },
+  logo: {
+    width: 200,
+    height: 60,
+    marginBottom: 30,
   },
 });
 

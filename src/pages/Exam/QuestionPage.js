@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {
   View,
   Text,
+  TextInput,
   StyleSheet,
   Button,
   Switch,
@@ -10,45 +11,52 @@ import {
   Icon,
 } from 'react-native';
 import ButtonGroup from 'react-native-button-group';
-
 import NavBar from '../../components/NavBar';
+import Colors from '../../colors/Colors.mjs';
 
 const QuestionPage = ({navigation}) => {
+  const [answerInput, setAnswerInput] = useState('');
   return (
     <View style={styles.container}>
       <View style={styles.contentContainer}>
         <View>
-          <Text style={styles.headerText}>Structual Systems</Text>
+        <Image source={require('../../resources/logo/eqals.png')} style={styles.logo}/>
+          <Text style={styles.headerText}>Structural Systems</Text>
         </View>
-
+        
         <View style={styles.viewBox}>
           <Text style={styles.examHeaderText}>
-            Regarding alterations and repairs to existing structures, which of
-            the following statements is correct?
+          For a basic wind speed of 70 mph the equivalent wind pressure is 12.5 psf.  
+          If the basic wind speed doubled to 140 mph, the equivalent wind pressure would be most nearly ______ psf?
           </Text>
         </View>
+        
+        <Image
+          source={{
+            uri: 'http://www.standout-cabin-designs.com/images/cottage-floor-plans11.JPG',
+          }}
+          style={styles.imageBox}
+        />
 
-        <View>
-          <Image
-            source={{
-              uri: 'http://www.standout-cabin-designs.com/images/cottage-floor-plans11.JPG',
-            }}
-          />
-        </View>
 
-        <View style={styles.viewBox}>
+        <View style={styles.textInputTitle}>
           <Text>Question Video</Text>
         </View>
 
-        <View style={styles.viewBox}>
-          <Text>answer space</Text>
+        <View style={styles.textInputTitle}>
+        <TextInput
+          placeholder='0.000'
+          style={styles.viewBox}
+          onChangeText={answerInput => setAnswerInput(answerInput)}
+        />
         </View>
 
         <View style={styles.bottom}>
           <ButtonGroup isFloat={true} position={'bottom'}>
             <Button title="back" />
             <Button
-              title="check?"
+              title="check?" 
+              color={Colors.accent.secondary}
               onPress={() => navigation.navigate('AnswerCheck')}
             />
             <Button title="forward" />
@@ -68,9 +76,11 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     marginBottom: 20,
+    alignItems: 'center',
   },
   headerContainer: {
     marginVertical: 20,
+    alignItems: 'center',
   },
   examContainer: {
     margin: 20,
@@ -80,7 +90,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 40,
     fontWeight: 'bold',
-    color: '#173C6F',
+    color: Colors.accent.secondary,
     // marginBottom: 20
   },
   examHeaderText: {
@@ -90,17 +100,34 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   optionHeaderText: {
-    fontSize: 17,
+    fontSize: 18,
     fontWeight: 'bold',
   },
   viewBox: {
-    margin: 6,
-    padding: 5,
-    borderTopWidth: 2,
-    borderRightWidth: 2,
-    borderColor: '#0398df',
+    marginBottom: 20,
+    borderWidth: 1,
+    borderColor: Colors.background.secondary,
     borderRadius: 8,
-    backgroundColor: '#e0dfe1',
+    fontSize: 18,
+    backgroundColor: Colors.background.primary,
+    color: Colors.text.primary
+  },
+  imageBox: {
+    height: '100%',
+    maxHeight: 400,
+    width: '100%',
+    maxWidth: 400,
+    margin: 5, 
+  },
+  logo: {
+    width: 200,
+    height: 60,
+    marginBottom: 30,
+  },
+  textInputTitle: {
+    fontSize: 20,
+    marginBottom: 5,
+    color: Colors.text.primary,
   },
 });
 export default QuestionPage;
