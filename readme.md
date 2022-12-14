@@ -2,6 +2,7 @@
 A robust, fresh, professional way to deliver content! EQuALS™ allows content to be setup in a presentation or exam-style format. This is a repository for the mobile application.
 ## Table of Contents
 - [App Overview](#app-overview)
+- [Contact](#contact)
 - [npm Packages](#npm-packages)
 - [Setup for Android](#setup-for-android)
 ## App Overview
