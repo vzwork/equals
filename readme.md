@@ -13,7 +13,6 @@ A robust, fresh, professional way to deliver content! EQuALS™ allows content t
   - Ariunzaya Erdenebileg - ariunzaya.erdenebi1@seattlecolleges.edu
   - Jason Beutler - jason.beutler@seattlecolleges.edu
   - Vlad Zakharov - vladislav.zakharov@seattlecolleges.edu
-  - 
 ## npm Packages
 
 ### [@react-native-community/checkbox](https://www.npmjs.com/package/@react-native-community/checkbox)
