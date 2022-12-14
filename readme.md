@@ -7,6 +7,8 @@ A robust, fresh, professional way to deliver content! EQuALS™ allows content t
 ## App Overview
 - Created using React Native
 
+## Contact
+  - Lucas Knezevich - lucas.knezevich@seattlecolleges.edu
 ## npm Packages
 
 ### [@react-native-community/checkbox](https://www.npmjs.com/package/@react-native-community/checkbox)
